@@ -545,15 +545,24 @@
       });
     </script>
     <script>
-    var expectedUrl = "https://spacecatgame.netlify.app";
+    var expectedUrls = [
+  "https://spacecatgame.netlify.app",
+  "https://spacecatgames.onrender.com",
+  "https://scg.meowcat.site"
+];
 
-if (!window.location.href.startsWith(expectedUrl)) {
+var currentUrl = window.location.href;
+
+var matchFound = expectedUrls.some(url => currentUrl.startsWith(url));
+
+if (!matchFound) {
   var header = document.getElementById('main-header');
   if (header) {
-    header.textContent = "Space Cat Games: Development";
-    header.style.color = "red"; // Optional: make it stand out
+    header.textContent = "Developer's Edition.";
+    header.style.color = "red";
   }
 }
+
 
     </script>
     <!-- 100% privacy-first analytics -->
