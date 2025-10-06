@@ -176,7 +176,7 @@
 
     <div class="hero">
       <div class="container">
-        <h1 id="main-header">Welcome to Space Cat Games 16 - Codename Aero</h1>
+        <h1 id="main-header">Welcome to Space Cat Games 16.1 - Codename Aero</h1>
         <div id="random-tip" class="random-tip"></div>
         <script>
           // Random tips array
@@ -235,6 +235,7 @@
             "SPACE CAT GAMES: NOW ONLY 99$!.",
             "Please return this repo to the respectful owner, me before I contact DMCA - random kid on nijikabot",
             "'You're running in a KDE environment but the OS keyring is not available for encryption. Ensure that you have kwallet running'. - Visual Studio Code, my computer",
+            "This tip was added in 16.1. How interesting."
           ];
 
           function showRandomTip() {
@@ -385,15 +386,6 @@
           
         </marquee>
       </div>
-
-      <section class="1channel-ad">
-        <h2>Check out our site!</h2>
-        <p>The offical Ijichi Systems website!</p>
-        <div class="game-item">
-          <a href="https://ijichi-systems.rf.gd/" class="btn">Ijichi Systems Site</a>
-        </div>
-      </section>
-
       
 
     </div>
@@ -404,15 +396,15 @@
           <div class="footer-links">
             <a href="index.html">Home</a>
             <a href="games.html">Games</a>
-            <a href="credits.html">Credits</a>
+            <a href="credits.html">Credits</a>s
             <a href="opensource.html">Open Source</a>
             <a href="changelog.html">Changelog</a>
           </div>
           <p class="copyright">© 2025 Nijika Softworks. All rights reserved.</p>
         <a href="https://nijikasoftworks.meowcat.site/"><img
           src="images/nsobgo.png"
-          height="100"
-          width="150"
+          height="150"
+          width="500"
         /></a>
         </div>
       </div>
@@ -549,6 +541,18 @@
           drawer.classList.toggle("open");
         });
       });
+    </script>
+    <script>
+    var expectedUrl = "https://spacecatgame.netlify.app";
+
+if (!window.location.href.startsWith(expectedUrl)) {
+  var header = document.getElementById('main-header');
+  if (header) {
+    header.textContent = "Space Cat Games: Development";
+    header.style.color = "red"; // Optional: make it stand out
+  }
+}
+
     </script>
     <!-- 100% privacy-first analytics -->
 <script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
