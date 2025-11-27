@@ -10,6 +10,17 @@
   <link href="css/style.css" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TTZS202J2Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TTZS202J2Q');
+</script>
+
 </head>
 <script>
   window.addEventListener('load', function() {
@@ -20,7 +31,85 @@
     }
   });
 </script>
-<body>
+<body class="dark-theme">
+    <script>
+      var redirectValue = 0; // 0 = no redirect, 1 = redirect to maintain.html
+    
+      if (redirectValue === 1) {
+        // Redirect to maintain.html
+        window.location.href = 'maintain.html';
+      }
+    </script>
+  <div id="commit-banner">
+  <button id="commit-banner-toggle" aria-label="Toggle commit banner">▼</button>
+  <span class="scrolling-text"></span>
+</div>
+<button id="commit-banner-float-toggle" aria-label="Show commit banner" style="display:none;position:fixed;right:24px;bottom:0;z-index:100001;background:#222;border:2px solid #b59f00;border-bottom:none;border-radius:8px 8px 0 0;color:#ffe600;font-size:1.2em;cursor:pointer;outline:none;padding:0 10px;user-select:none;height:28px;align-items:center;box-shadow:0 -2px 8px rgba(0,0,0,0.2);">▲</button>
+<style>
+  #commit-banner {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  background: #222;
+  color: #ffe600;
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-size: 0.95em;
+  z-index: 99999;
+  white-space: nowrap;
+  overflow: hidden;
+  height: 32px;
+  border-top: 2px solid #b59f00;
+  transition: transform 0.3s;
+  pointer-events: auto;
+}
+#commit-banner.hide {
+  transform: translateY(100%);
+}
+#commit-banner .scrolling-text {
+  display: block;
+  min-width: 100vw;
+  /* Ensures the text is always at least as wide as the banner */
+  animation: scroll-left 20s linear infinite;
+  overflow: hidden;
+  white-space: nowrap;
+  will-change: transform;
+}
+@keyframes scroll-left {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+</style>
+<script>
+  // Set your server's current version here
+  const serverVersion = "16"; // <-- update as needed
+
+  const user = "Starry-Systems";
+  const repo = "space-cat-games";
+
+  Promise.all([
+    fetch(`https://api.github.com/repos/${user}/${repo}/commits?per_page=1`).then(r => r.json()),
+    fetch(`https://api.github.com/repos/${user}/${repo}/releases/latest`).then(r => r.json())
+  ])
+    .then(([commitData, releaseData]) => {
+      let githubVersion = releaseData.tag_name ? releaseData.tag_name : "unknown";
+      if (!commitData[0]) return;
+      const commit = commitData[0];
+      const hash = commit.sha.substring(0, 7);
+      const title = commit.commit.message.split("\n")[0];
+      const committer = commit.commit.committer.name;
+      const date = new Date(commit.commit.committer.date).toLocaleString();
+      const text = `Last Commit: ${hash} — "${title}" by ${committer} at ${date} | Reported Server Version: v${serverVersion} | Latest Reported GitHub Release: ${githubVersion}`;
+      document.querySelector("#commit-banner .scrolling-text").textContent = text;
+    })
+    .catch(() => {
+      document.querySelector("#commit-banner .scrolling-text").textContent =
+        "Could not load commit info or release. Is GitHub API Blocked?";
+    });
+
+</script>
   <div id="loading-spinner" style="
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -54,267 +143,263 @@
   </noscript>
   <div class="topnav">
     <a href="index.html">Home</a>
-    <a href="games.html">Games</a>
-    <a href="news.html">News</a>
+    <a href="games.html" class="active">Games</a>
+    <a href="https://nijikasoftworks.meowcat.site/">News</a>
     <a href="opensource.html">Source Code</a>
     <a href="credits.html">Credits</a>
     <a href="changelog.html">Changelog</a>
     <a href="archive.html">Archive</a>
-    <a href="submitad.html">Submit Ad!</a>
-    <a
-      href="https://docs.google.com/document/d/e/2PACX-1vT-28hqhqnzJb3ABu47A7wYL6ei8MIE7DD7yGq1VrR6D7HSfrHjZlGfsneivTIdLFp16dcWPDhZhjx7/pub">Documentation</a>
-    <a href="https://starry-sys.betteruptime.com/">Status</a>
-  </div>
-
+    </div>
   <div class="container">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : '3342023dbd06c303a795d1be57fdfb0c',
+        'format' : 'iframe',
+        'height' : 300,
+        'width' : 160,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/3342023dbd06c303a795d1be57fdfb0c/invoke.js"></script>
     <h1>Games Collection</h1>
     <p>Browse our extensive collection of free browser games. Click on any game to start playing instantly!</p>
 
-   <!-- Ad Roster Display -->
-<div id="ad-roster" style="margin: 2em auto; max-width: 480px; text-align: center;"></div>
-<script>
-// List of ads (add more as needed)
-const ads = [
-  {
-    title: "Your Ad Here!",
-    image: "ads/adhere.webp",
-    link: "submitad.html"
-  },
-  {
-    title: "Advertise Here!",
-    image: "ads/adhere.webp",
-    link: "submitad.html"
-  },
-  // Example: Add more ads below
-  // {
-  //   title: "Cool Game!",
-  //   image: "ads/coolgame.png",
-  //   link: "https://example.com"
-  // }
-];
 
-// Function to display a random ad
-function showRandomAd() {
-  const ad = ads[Math.floor(Math.random() * ads.length)];
-  document.getElementById('ad-roster').innerHTML = `
-    <a href="${ad.link}" target="_blank" style="text-decoration:none;color:inherit;">
-      <img src="${ad.image}" alt="${ad.title}" style="max-width:160px;max-height:80px;border-radius:8px;box-shadow:0 2px 8px #000a;">
-      <div style="margin-top:0.5em;font-weight:bold;font-size:1em;">${ad.title}</div>
-    </a>
-  `;
-}
 
-// Show a new ad every 10 seconds
-showRandomAd();
-setInterval(showRandomAd, 10000);
-</script>
 
-    <h2>All Games</h2>
-    <!-- Eplinx.com / Banner / 468x60 / Full Banner --><ins class="aso-zone" data-zone="138908"></ins>
-    <script data-cfasync="false" async src="https://media.eplinx.net/js/code.min.js"></script><!-- /Eplinx.com -->
-    <div class="games-grid">
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='/games/adjustable-fireworks.html'"
-          title="Adjustable Fireworks">
-          <img src="/images/noimg.png" alt="No Image available">
-        </button>
-        <p>Adjustable Fireworks</p>
-      </div>
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/wordle.html'" title="Wordle">
-          <img src="https://i.ibb.co/SXZymjyS/images.png" alt="Wordle">
-        </button>
-        <p>Wordle</p>
-      </div>
+
+    <!-- FOOTBALL GAMES SECTION-->
+      <h2 class="center-text">Football Games</h2>
+      <div class="games-grid">
 
       <div class="game-item">
-        <button type="button" onclick="window.location.href='games/dino.html'" title="Chrome Dino">
-          <img src="https://i.ibb.co/GBrwZRt/hes-just-so-pixelated-i-love-him-v0-obzrwinx6wfc1.webp" alt="Chrome Dino">
+        <button type="button" onclick="window.location.href='/games/fifa2007.html'" title="FIFA 2007">
+          <img src="/images/noimg.png" alt="No Img">
         </button>
-        <p>Chrome Dino</p>
+        <p>FIFA 2007</p>
+      </div>
+      <div class="game-item">
+        <button type="button" onclick="window.location.href='/games/taptap.html'" title="Tap Goal">
+          <img src="/images/tapcap.png" alt="Tap Goal">
+        </button>
+        <p>Tap Goal</p>
+      </div>
       </div>
 
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/gm.html'" title="Geometry Dash">
-          <img src="https://i.ibb.co/Xr5LnpSz/Logo-of-Geometry-Dash-svg.png" alt="Geometry Dash">
-        </button>
-        <p>Geometry Dash</p>
-      </div>
+      <!-- PUZZLE GAMES SECTION-->
+      <h2 class="center-text">Puzzle Games</h2>
 
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/tetris.html'" title="Tetris">
-          <img src="https://i.ibb.co/vv645Z00/tetris-logo.png" alt="Tetris">
-        </button>
-        <p>Tetris</p>
-      </div>
+      <div class="games-grid">
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='games/hardestgame.html'" title="The Hardest Game">
+            <img src="https://i.ibb.co/nNYZ2FST/8-LMW84-image-75.jpg" alt="The Hardest Game">
+          </button>
+          <p>The Hardest Game</p>
+        </div>
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='games/suika.html'" title="The Hardest Game">
+            <img src="images/suika-icon.png" alt="The Hardest Game">
+          </button>
+          <p>Suika Game</p>
+        </div>
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='games/Connect the Pipes.html'" title="Connect the Pipes">
+              <img src="/images/pipecap.png" alt="Connect the Pipes">
+            </button>
+            <p>Connect The Pipes</p>
+          </div>
+    
+          <div class="game-item">
+            <button type="button" onclick="window.location.href='games/circle.html'" title="Circloo">
+              <img src="https://i.ibb.co/nN1xjLPG/971353830f129fd3f1446398792e6997.jpg" alt="Circloo">
+            </button>
+            <p>Circloo</p>
+          </div>
+          <div class="game-item">
+        <button type="button" onclick="window.location.href='/games/maze.html'" title="Maze">
+            <img src="/images/maze-cap.png" alt="Maze">
+          </button>
+          <p>Maze</p>
+        </div>
 
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/stack.html'" title="Stack">
-          <img src="https://i.ibb.co/YTVCpPqL/unnamed.png" alt="Stack">
-        </button>
-        <p>Stack</p>
-      </div>
+        <div class="game-item">
+        <button type="button" onclick="window.location.href='/games/there-is-no-game/index.html'" title="i think there is">
+            <img src="/games/there-is-no-game/images/letter_n-sheet0.png" alt="A blue and white letter N.">
+          </button>
+          <p>There is no game</p>
+        </div>
 
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/fluid.html'" title="Fluid Simulation">
-          <img src="https://i.ibb.co/bjKdtQGs/Fluid-App.webp" alt="Fluid Simulation">
-        </button>
-        <p>Fluid Simulation</p>
-      </div>
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='/games/The Typing Game.html'" title="when">
+              <img src="images/thetypinggame.png" alt="cat.">
+            </button>
+            <p>The Typing Game</p>
+          </div>
 
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/bmptest.html'" title="BMP Test">
-          <img src="https://i.ibb.co/gZfFXQMt/1541504.png" alt="BMP Test">
-        </button>
-        <p>BMP Test</p>
-      </div>
+          <div class="game-item">
+            <button type="button" onclick="window.location.href='/games/Pick a Lock.html'" title="big yellow storage">
+                <img src="images/pickalock.png" alt="big yellow storage">
+              </button>
+              <p>Pick a Lock</p>
+            </div>
 
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/circle.html'" title="Circloo">
-          <img src="https://i.ibb.co/nN1xjLPG/971353830f129fd3f1446398792e6997.jpg" alt="Circloo">
-        </button>
-        <p>Circloo</p>
-      </div>
+            <div class="game-item">
+              <button type="button" onclick="window.location.href='/games/Cubit - A 3D game.html'" title="big yellow storage">
+                  <img src="images/cubit.png" alt="big yellow storage">
+                </button>
+                <p>Cubit</p>
+              </div>
+          
+        
+        
 
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/hell.html'" title="Dante">
-          <img src="https://i.ibb.co/zhy037Mm/200px-Debugempty.png" alt="Dante">
-        </button>
-        <p>Dante</p>
       </div>
+      </div>
+      <!--CLASSIC GAMES SECTION-->
 
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/sand.html'" title="Sand:box">
-          <img src="https://i.ibb.co/xKbrp64L/images.jpg" alt="Sand:box">
-        </button>
-        <p>Sand:box</p>
-      </div>
+    <h2 class="center-text">Classics</h2>
+    
+      <div class="games-grid">
 
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='games/wordle.html'" title="Wordle">
+            <img src="https://i.ibb.co/SXZymjyS/images.png" alt="Wordle">
+          </button>
+          <p>Wordle</p>
+        </div>
+  
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='games/dino.html'" title="Chrome Dino">
+            <img src="https://i.ibb.co/GBrwZRt/hes-just-so-pixelated-i-love-him-v0-obzrwinx6wfc1.webp" alt="Chrome Dino">
+          </button>
+          <p>Chrome Dino</p>
+        </div>
+  
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='games/gm.html'" title="Geometry Dash">
+            <img src="https://i.ibb.co/Xr5LnpSz/Logo-of-Geometry-Dash-svg.png" alt="Geometry Dash">
+          </button>
+          <p>Geometry Dash</p>
+        </div>
+  
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='games/tetris.html'" title="Tetris">
+            <img src="https://i.ibb.co/vv645Z00/tetris-logo.png" alt="Tetris">
+          </button>
+          <p>Tetris</p>
+        </div>
+  
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='games/stack.html'" title="Stack">
+            <img src="https://i.ibb.co/YTVCpPqL/unnamed.png" alt="Stack">
+          </button>
+          <p>Stack</p>
+        </div>
+  
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='/games/clcrazycattle3d.html'" title="Best game ever made!">
+            <img src="/images/cattlemoment.webp" alt="Crazy Cattle 3D">
+          </button>
+          <p>Crazy Cattle 3D</p>
+        </div>
+  
       <div class="game-item">
-        <button type="button" onclick="window.location.href='games/paperio.html'" title="Paper.io 2">
-          <img src="https://i.ibb.co/VYFygR7L/images-1.jpg" alt="Paper.io 2">
-        </button>
-        <p>Paper.io 2</p>
-      </div>
+          <button type="button" onclick="window.location.href='/games/slope.html'" title="Slope">
+            <img src="/images/slopeicon.jpeg" alt="Slope">
+          </button>
+          <p>Slope</p>
+        </div>
 
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/doodle.html'" title="Doodle Jump">
-          <img src="https://i.ibb.co/hR1ZK9Yc/Doodle-Jump.png" alt="Doodle Jump">
-        </button>
-        <p>Doodle Jump</p>
-      </div>
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='/games/moto.html'" title="MotoX3M">
+            <img src="/images/motocap.avif" alt="motocap.avif">
+          </button>
+          <p>MotoX3M</p>
+        </div>
 
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/snake.html'" title="Snake Game">
-          <img src="https://i.ibb.co/PGMhS950/images-3.jpg" alt="Snake Game">
-        </button>
-        <p>Snake Game</p>
-      </div>
+        
 
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/pingpong.html'" title="Ping Pong">
-          <img src="https://i.ibb.co/LD4Z3872/pong-1650079489009.jpg" alt="Ping Pong">
-        </button>
-        <p>Ping Pong</p>
-      </div>
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='games/doodle.html'" title="Doodle Jump">
+            <img src="https://i.ibb.co/hR1ZK9Yc/Doodle-Jump.png" alt="Doodle Jump">
+          </button>
+          <p>Doodle Jump</p>
+        </div>
+  
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='games/snake.html'" title="Snake Game">
+            <img src="https://i.ibb.co/PGMhS950/images-3.jpg" alt="Snake Game">
+          </button>
+          <p>Snake Game</p>
+        </div>
+  
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='games/pingpong.html'" title="Ping Pong">
+            <img src="https://i.ibb.co/LD4Z3872/pong-1650079489009.jpg" alt="Ping Pong">
+          </button>
+          <p>Ping Pong</p>
+        </div>
 
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/oofclick.html'" title="OOF Clicker">
-          <img src="https://i.ibb.co/MyM3h1vp/OOF.webp" alt="OOF Clicker">
-        </button>
-        <p>OOF Clicker</p>
-      </div>
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='games/winmine.html'" title="Minesweeper">
+            <img src="https://i.ibb.co/Kc1J3Nhj/Mr-Smiley-Face-from-Minesweeper-render.webp" alt="Minesweeper">
+          </button>
+          <p>Minesweeper</p>
+        </div>
 
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/hardestgame.html'" title="The Hardest Game">
-          <img src="https://i.ibb.co/nNYZ2FST/8-LMW84-image-75.jpg" alt="The Hardest Game">
-        </button>
-        <p>The Hardest Game</p>
-      </div>
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='games/fly3.html'" title="Learn to Fly 3">
+            <img src="https://i.ibb.co/GfPzN9Ns/images-5.jpg" alt="Learn to Fly 3">
+          </button>
+          <p>Learn to Fly 3</p>
+        </div>
 
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/fly.html'" title="Learn to Fly">
-          <img src="https://i.ytimg.com/vi/qIBxUAp-Gk8/maxresdefault.jpg" alt="Learn to Fly">
-        </button>
-        <p>Learn to fly</p>
-      </div>
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='games/stckmnhk/index.html'" title="spunger man">
+            <img src="games/stckmnhk/icon.jpg" alt="Stick Man Hook icon">
+          </button>
+          <p>Stickman Hook</p>
+        </div>
+  
+  
+       
+  
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='games/fly.html'" title="Learn to Fly">
+            <img src="https://i.ytimg.com/vi/qIBxUAp-Gk8/maxresdefault.jpg" alt="Learn to Fly">
+          </button>
+          <p>Learn to fly</p>
+        </div>
 
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/mcplat.html'" title="Minecraft Platformer">
-          <img src="https://i.ibb.co/B2vP8hy0/images-7.jpg" alt="Minecraft Platformer">
-        </button>
-        <p>Minecraft Platformer</p>
-      </div>
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='games/subsurf/subsurfs.html'" title="attention span consumer">
+            <img src="games/subsurf/icon.png" alt="Subway Surfers">
+          </button>
+          <p>Subway Surfers</p>
+        </div>
 
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/minecraft.html'" title="Minecraft">
-          <img src="https://i.ibb.co/tT7XZRMW/Grass-Block-JE2.webp" alt="Minecraft">
-        </button>
-        <p>Minecraft</p>
-      </div>
+        </div>
 
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/time3.html'" title="Time Shooter 3">
-          <img src="https://i.ibb.co/PzYcrhGC/images-8.jpg" alt="Time Shooter 3">
+        <h2 class="center-text">Papa's Games</h2>
+<div class="games-grid">
+          <div class="game-item">
+        <button type="button" onclick="window.location.href='games/sushi.html'" title="Papa's Sushiria">
+          <img src="images/icon_300x300_papassushiria.jpg" alt="Papa's Sushiria">
         </button>
-        <p>Time Shooter 3</p>
+        <p>Papa's Sushiria</p>
       </div>
-
       <div class="game-item">
-        <button type="button" onclick="window.location.href='games/slide.html'" title="Slide Puzzle">
-          <img src="https://i.ibb.co/1frgTZhB/unnamed-3.png" alt="Slide Puzzle">
+        <button type="button" onclick="window.location.href='games/papahotdog.html'" title="Papa's Hotdoggeria">
+          <img src="hotdog.jpg" alt="Papa's Hotdoggeria">
         </button>
-        <p>Slide Puzzle</p>
+        <p>Papa's Hotdoggeria</p>
       </div>
-
       <div class="game-item">
-        <button type="button" onclick="window.location.href='games/target.html'" title="Target Rush">
-          <img src="https://i.ibb.co/4ZcfP4Xs/UA5o3P.png" alt="Target Rush">
+        <button type="button" onclick="window.location.href='games/papacheese.html'" title="Papa's Hotdoggeria">
+          <img src="cheeseria_300x300.jpg" alt="Papa's Cheeseria">
         </button>
-        <p>Target Rush</p>
-      </div>
-
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='https://webosu.online/'" title="webosu!">
-          <img src="https://i.ibb.co/ksDVpKTp/Osu-Logo-2016-svg.png" alt="webosu!">
-        </button>
-        <p>webosu!</p>
-      </div>
-
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/rr.html'" title="Railroad Runner">
-          <img src="https://i.ibb.co/JW326Y6X/Screenshot-2025-03-13-11-44-18.png" alt="Railroad Runner">
-        </button>
-        <p>Railroad Runner</p>
-      </div>
-
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/roadrace.html'" title="Road Race 2">
-          <img src="https://i.ibb.co/mCRSq3KB/Screenshot-2025-03-13-11-54-16.png" alt="Road Race 2">
-        </button>
-        <p>Road Race 2</p>
-      </div>
-
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/winmine.html'" title="Minesweeper">
-          <img src="https://i.ibb.co/Kc1J3Nhj/Mr-Smiley-Face-from-Minesweeper-render.webp" alt="Minesweeper">
-        </button>
-        <p>Minesweeper</p>
-      </div>
-
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/captain.html'" title="Captain Callisto">
-          <img src="https://i.ibb.co/tTYw89Cv/Screenshot-2025-03-23-17-02-24.png" alt="Captain Callisto">
-        </button>
-        <p>Captain Callisto</p>
-      </div>
-
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/asciishooter.html'" title="ASCII Shooter">
-          <img src="https://i.ibb.co/vxxDd0sd/Screenshot-2025-03-23-17-44-36.png" alt="ASCII Shooter">
-        </button>
-        <p>ASCII Shooter</p>
-      </div>
+        <p>Papa's Cheeseria</p>
+      </div> <!-- most SWF handlers are forked from here-->
 
       <div class="game-item">
         <button type="button" onclick="window.location.href='games/papalouie.html'" title="Papa Louie 2">
@@ -344,138 +429,36 @@ setInterval(showRandomAd, 10000);
         <p>Papa's Freezeria</p>
       </div>
 
-
-
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/papahotdog.html'" title="Papa's Hotdoggeria">
-          <img src="hotdog.jpg" alt="Papa's Hotdoggeria">
-        </button>
-        <p>Papa's Hotdoggeria</p>
       </div>
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/papacheese.html'" title="Papa's Hotdoggeria">
-          <img src="cheeseria_300x300.jpg" alt="Papa's Cheeseria">
-        </button>
-        <p>Papa's Cheeseria</p>
-      </div> <!-- most SWF handlers are forked from here-->
+      
+      
+      <h2 class="center-text">Clicker Games</h2>
+      <div class="games-grid">
 
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/blackhole.html'" title="Black Hole Square">
-          <img src="pipebomb.png" alt="Black Hole Square">
-        </button>
-        <p>Black Hole Square</p>
-      </div>
-
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/fly3.html'" title="Learn to Fly 3">
-          <img src="https://i.ibb.co/GfPzN9Ns/images-5.jpg" alt="Learn to Fly 3">
-        </button>
-        <p>Learn to Fly 3</p>
-      </div>
-
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/sushi.html'" title="Papa's Sushiria">
-          <img src="images/icon_300x300_papassushiria.jpg" alt="Papa's Sushiria">
-        </button>
-        <p>Papa's Sushiria</p>
-      </div>
-      <div class="game-item">
+        <div class="game-item">
         <button type="button" onclick="window.location.href='games/fruits.html'" title="Papa's Sushiria">
           <img src="/images/fruitscap.png" alt="Papa's Sushiria">
         </button>
         <p>🤑💰💸The Fruits🤑💰💸</p>
       </div>
+
       <div class="game-item">
-        <button type="button" onclick="window.location.href='https://glueification.netlify.app/'"
-          title="Glueification!">
-          <img src="/icon/icon.png" alt="Glueification">
+        <button type="button" onclick="window.location.href='games/oofclick.html'" title="OOOOOF!">
+          <img src="/images/noimg.png" alt="No Image Available">
         </button>
-        <p>Glueification!</p>
-      </div>
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/beepbox_offline.html'" title="Beepbox">
-          <img src="/images/noimg.png" alt="No Image">
-        </button>
-        <p>Beepbox</p>
-      </div>
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/musicgen.html'" title="AI Music Creator">
-          <img src="/images/note.jpg" alt="Music Note">
-        </button>
-        <p>AI Music Creator</p>
-      </div>
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/Connect the Pipes.html'" title="Connect the Pipes">
-          <img src="/images/pipecap.png" alt="Connect the Pipes">
-        </button>
-        <p>Connect The Pipes</p>
-      </div>
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='/games/clcrazycattle3d.html'" title="Crazy Cattle 3D">
-          <img src="/images/cattlemoment.webp" alt="Crazy Cattle 3D">
-        </button>
-        <p>Crazy Cattle 3D</p>
-      </div>
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='/games/bbfactory.html'" title="Bauble Factory">
-          <img src="/images/bbfactory-cap.png" alt="The Bauble Factory">
-        </button>
-        <p>The Bauble Factory</p>
-      </div>
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='/games/slope.html'" title="Slope">
-          <img src="/images/slopeicon.jpeg" alt="Slope">
-        </button>
-        <p>Slope</p>
-      </div>
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='/games/maze.html'" title="Maze">
-          <img src="/images/maze-cap.png" alt="Maze">
-        </button>
-        <p>Maze</p>
-      </div>
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='/games/crashbo.html'" title="Car Anatomy">
-          <img src="/images/noimg.png" alt="No Img">
-        </button>
-        <p>Car Anatomy 2</p>
-      </div>
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='/games/fifa2007.html'" title="FIFA 2007">
-          <img src="/images/noimg.png" alt="No Img">
-        </button>
-        <p>FIFA 2007</p>
-      </div>
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='/games/taptap.html'" title="Tap Goal">
-          <img src="/images/tapcap.png" alt="Tap Goal">
-        </button>
-        <p>Tap Goal</p>
-      </div>
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='/games/cookie.html'" title="Cookie Clicke">
-          <img src="/images/cookieclicker.png" alt="Cookie Clicker Logo">
+        <p>OOF Clicker</p>
+    </div>
+    <div class="game-item">
+        <button type="button" onclick="window.location.href='games/cc/index.html'" title="cookie pls">
+          <img src="/games/cc/icon.png" alt="Cookie Clicker Logo">
         </button>
         <p>Cookie Clicker</p>
-      </div>
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='/games/moto.html'" title="MotoX3M">
-          <img src="/images/motocap.avif" alt="motocap.avif">
-        </button>
-        <p>MotoX3M</p>
-      </div>
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='/games/helios.html'" title="Helios">
-          <img src="/images/noimg.png" alt="No Image available">
-        </button>
-        <p>Helios Proxy</p>
-      </div>
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='/games/chickengame2.html'" title="Chicken Game 2">
-          <img src="/images/chickencap.png" alt="Chicken Game 2">
-        </button>
-        <p>Chicken Game 2</p>
-      </div>
+    </div>
+    </div>
+
+    <h2 class="center-text">Driving Games</h2>
+    <div class="games-grid">
+
       <div class="game-item">
         <button type="button" onclick="window.location.href='https://supertuxkart.pages.dev/'" title="SuperTuxKart">
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3wVhcyQV-z7il2CAUbDkZJKkWTUe9lrR_3A&s"
@@ -483,50 +466,323 @@ setInterval(showRandomAd, 10000);
         </button>
         <p>SuperTuxKart</p>
       </div>
+
+      <div class="game-item">
+        <button type="button" onclick="window.location.href='/games/crashbo.html'" title="Car Anatomy">
+          <img src="/images/noimg.png" alt="No Img">
+        </button>
+        <p>Car Anatomy</p>
+      </div>
+
+      <div class="game-item">
+        <button type="button" onclick="window.location.href='games/roadrace.html'" title="Road Race 2">
+          <img src="https://i.ibb.co/mCRSq3KB/Screenshot-2025-03-13-11-54-16.png" alt="Road Race 2">
+        </button>
+        <p>Road Race 2</p>
+      </div>
+
+       <div class="game-item">
+        <button type="button" onclick="window.location.href='games/truckspace2/index.html'" title="euro truck simulator 2000">
+          <img src="/images/ts2.jpg" alt="truck space 2">
+        </button>
+        <p>Truck Space 2</p>
+      </div>
+
     </div>
 
-    <div class="tools">
-      <h2>Tools</h2>
-      <p>Note: A lot of these tools are for the developers, but you can still have fun with them!</p>
+    <!--MINECRAFT GAMES-->
+    <h2 class="center-text">Minecraft Games</h2>
+    <div class="games-grid">
       <div class="game-item">
-        <button type="button" onclick="window.location.href='/games/pixconv.html'" title="Pixel Converter">
-          <img src="/images/noimg.png" alt="No Image available">
+
+        <button type="button" onclick="window.location.href='games/mcplat.html'" title="Minecraft Platformer">
+          <img src="https://i.ibb.co/B2vP8hy0/images-7.jpg" alt="Minecraft Platformer">
         </button>
-        <p>Pixel Converter</p>
+        <p>Minecraft Platformer</p>
       </div>
+
       <div class="game-item">
-        <button type="button" onclick="window.location.href='/games/Base64 converter.html'" title="Base64 Converter">
-          <img src="/images/noimg.png" alt="No Image available">
+        <button type="button" onclick="window.location.href='games/minecraft.html'" title="Minecraft">
+          <img src="https://i.ibb.co/tT7XZRMW/Grass-Block-JE2.webp" alt="Minecraft">
         </button>
-        <p>File to Base64</p>
+        <p>Minecraft</p>
       </div>
+
       <div class="game-item">
-        <button type="button" onclick="window.location.href='/games/packager.html'" title="Ikuyo Packaging System">
-          <img src="/images/noimg.png" alt="No Image available">
+        <button type="button" onclick="window.location.href='games/mconline.html'" title="Chicken Jockey!">
+          <img src="/images/noimg.png" alt="No Image Available">
         </button>
-        <p>Ikuyo Packaging System</p>
+        <p>Minecraft Platformer - Online</p>
       </div>
+
+    </div>
+    <!--ONLINE GAMES SECTION-->
+    <h2 class="center-text">Online Games</h2>
+    <div class="games-grid">
+
       <div class="game-item">
-        <button type="button" onclick="window.location.href='/games/htmlrunner.html'" title="Ikuyo Packaging System">
-          <img src="/images/noimg.png" alt="No Image available">
+        <button type="button" onclick="window.location.href='games/paperio.html'" title="Paper.io 2">
+          <img src="https://i.ibb.co/VYFygR7L/images-1.jpg" alt="Paper.io 2">
         </button>
-        <p>HTML Rapid Prototyping Tool</p>
+        <p>Paper.io 2</p>
       </div>
+
       <div class="game-item">
-        <button type="button" onclick="window.location.href='/games/textedit.html'" title="µEdit">
-          <img src="/images/noimg.png" alt="No Image available">
+        <button type="button" onclick="window.location.href='games/mconline.html'" title="Chicken Jockey!">
+          <img src="/images/noimg.png" alt="No Image Available">
         </button>
-        <p>µEdit</p>
+        <p>Minecraft Platformer - Online</p>
       </div>
+
+      <div class="game-item">
+        <button type="button" onclick="window.location.href='https://supertuxkart.pages.dev/'" title="SuperTuxKart">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3wVhcyQV-z7il2CAUbDkZJKkWTUe9lrR_3A&s"
+            alt="SuperTuxKart">
+        </button>
+        <p>SuperTuxKart</p>
+      </div>
+
+
+
     </div>
 
+    <!--TOOLS/TESTS SECTION-->
+    <h2 class="center-text">Tools and Tests</h2>
+      <div class="games-grid">
+
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='/games/adjustable-fireworks.html'"
+            title="Adjustable Fireworks">
+            <img src="/images/noimg.png" alt="No Image available">
+          </button>
+          <p>Adjustable Fireworks</p>
+        </div>
+
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='games/bmptest.html'" title="BMP Test">
+            <img src="https://i.ibb.co/gZfFXQMt/1541504.png" alt="BMP Test">
+          </button>
+          <p>BMP Test</p>
+        </div>
+
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='games/musicgen.html'" title="AI Music Creator">
+            <img src="/images/note.jpg" alt="Music Note">
+          </button>
+          <p>AI Music Creator</p>
+        </div>
+
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='games/beepbox_offline.html'" title="Beepbox">
+            <img src="/images/noimg.png" alt="No Image">
+          </button>
+          <p>Beepbox</p>
+        </div>
 
 
 
 
-  </div>
-  </div>
-  </div>
+      </div>
+      <h2 class="center-text">Shooter Games</h2>
+      <div class="games-grid">
+
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='games/time3.html'" title="Time Shooter 3">
+            <img src="https://i.ibb.co/PzYcrhGC/images-8.jpg" alt="Time Shooter 3">
+          </button>
+          <p>Time Shooter 3</p>
+          </div>
+          
+          <div class="game-item">
+            <button type="button" onclick="window.location.href='games/asciishooter.html'" title="ASCII Shooter">
+              <img src="https://i.ibb.co/vxxDd0sd/Screenshot-2025-03-23-17-44-36.png" alt="ASCII Shooter">
+            </button>
+            <p>ASCII Shooter</p>
+          </div>
+
+          <div class="game-item">
+            <button type="button" onclick="window.location.href='games/ballblast.html'" title="Ball Blast">
+              <img src="/images/ballblast-cap.png" alt="Ball Blast">
+            </button>
+            <p>Ball Blast</p>
+          </div>
+
+          <div class="game-item">
+          <button type="button" onclick="window.location.href='/games/warfarearea3/index.html'" title="looks like counter strike 1">
+            <img src="/images/warfarearea3.jpg" alt="A picture of a man holding a gun, surrounded by enemies.">
+          </button>
+          <p>Warfare Area 3</p>
+        </div>
+
+
+        </div>
+      </div>
+    </div>
+     <h2 class="center-text">Other Games</h2>
+     <div class="games-grid">
+
+      <div class="game-item">
+        <button type="button" onclick="window.location.href='games/sand.html'" title="Sand:box">
+          <img src="https://i.ibb.co/xKbrp64L/images.jpg" alt="Sand:box">
+        </button>
+        <p>Sand:box</p>
+      </div>
+
+      
+
+
+      
+
+      <div class="game-item">
+        <button type="button" onclick="window.location.href='https://webosu.online/'" title="webosu!">
+          <img src="https://i.ibb.co/ksDVpKTp/Osu-Logo-2016-svg.png" alt="webosu!">
+        </button>
+        <p>webosu!</p>
+      </div>
+
+      <div class="game-item">
+        <button type="button" onclick="window.location.href='games/rr.html'" title="Railroad Runner">
+          <img src="https://i.ibb.co/JW326Y6X/Screenshot-2025-03-13-11-44-18.png" alt="Railroad Runner">
+        </button>
+        <p>Railroad Runner</p>
+      </div>
+
+      
+
+     
+
+      <div class="game-item">
+        <button type="button" onclick="window.location.href='games/captain.html'" title="Captain Callisto">
+          <img src="https://i.ibb.co/tTYw89Cv/Screenshot-2025-03-23-17-02-24.png" alt="Captain Callisto">
+        </button>
+        <p>Captain Callisto</p>
+      </div>
+
+      
+
+        <div class="game-item">
+        <button type="button" onclick="window.location.href='games/blackhole.html'" title="Black Hole Square">
+          <img src="pipebomb.png" alt="Black Hole Square">
+        </button>
+        <p>Black Hole Square</p>
+      </div>
+
+      
+
+      
+      
+      
+      
+      
+      <div class="game-item">
+        <button type="button" onclick="window.location.href='games/target.html'" title="Target Rush">
+          <img src="https://i.ibb.co/4ZcfP4Xs/UA5o3P.png" alt="Target Rush">
+        </button>
+        <p>Target Rush</p>
+      </div>
+
+      <div class="game-item">
+        <button type="button" onclick="window.location.href='/games/gamble1928.html'" title="gamble1928">
+          <img src="/images/1928cap.png" alt="gamble1928">
+        </button>
+        <p>gamble1928</p>
+        </div>
+
+
+
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='/games/bbfactory.html'" title="Bauble Factory">
+            <img src="/images/bbfactory-cap.png" alt="The Bauble Factory">
+          </button>
+          <p>The Bauble Factory</p>
+        </div>
+
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='/games/chickengame2.html'" title="Chicken Game 2">
+            <img src="/images/chickencap.png" alt="Chicken Game 2">
+          </button>
+          <p>Chicken Game 2</p>
+        </div>
+
+
+
+
+      <div class="game-item">
+        <button type="button" onclick="window.location.href='https://glueification.netlify.app/'" title="Glueification!">
+          <img src="/icon/icon.png" alt="Glueification">
+        </button>
+        <p>Glueification!</p>
+      </div>
+
+
+      <div class="game-item">
+        <button type="button" onclick="window.location.href='/games/helios.html'" title="Helios">
+          <img src="/images/noimg.png" alt="No Image available">
+        </button>
+        <p>Helios Proxy</p>
+      </div>
+
+      <div class="game-item">
+        <button type="button" onclick="window.location.href='/games/paperception.html'" title="paper cut simulator">
+          <img src="/images/paperception-icon.png" alt="Paperception">
+        </button>
+        <p>Paperception</p>
+      </div>
+
+       <div class="game-item">
+        <button type="button" onclick="window.location.href='/games/monkey-mart/index.html'" title="economic simulator">
+          <img src="/games/monkey-mart/bg_loading.png" alt="Monkey">
+        </button>
+        <p>Monkey Mart</p>
+      </div>
+
+      <div class="game-item">
+        <button type="button" onclick="window.location.href='/games/f1/index.html'" title="har har har har">
+          <img src="/games/f1/icon.png" alt="FNAF 1">
+        </button>
+        <p>FNAF 1</p>
+      </div>
+
+      <div class="game-item">
+        <button type="button" onclick="window.location.href='/games/3D Plane Game v2.3.html'" title="There's a second bus coming!">
+          <img src="/images/3dplane.gif" alt="plane">
+        </button>
+        <p>3D Plane Game</p>
+      </div>
+
+      <div class="game-item">
+        <button type="button" onclick="window.location.href='/games/Miner cat - Game.html'" title="mince beef">
+          <img src="/images/minercat.png" alt="A cooked beef steak">
+        </button>
+        <p>Miner Cat</p>
+      </div>
+
+      </div>
+      <h2 class="center-text">Testing Apps</h2>
+      <p>For Development Use</p>
+      <div class="games-grid">
+
+        <div class="game-item">
+          <button type="button" onclick="window.location.href='/games/badapple.html'" title="Bad Apple">
+            <img src="/images/noimg.png" alt="No Image available">
+          </button>
+          <p>Bad Apple</p>
+        </div>
+
+      </div>
+
+
+
+
+
+
+
+
+
+      </div>
+      </div>
+      </div>
+      </div>
 
   <footer>
     <div class="container">
@@ -539,13 +795,19 @@ setInterval(showRandomAd, 10000);
           <a href="changelog.html">Changelog</a>
           <a href="archive.html">Archive</a>
         </div>
-        <!-- Eplinx.com / Banner / 468x60 / Full Banner --><ins class="aso-zone" data-zone="138908"></ins>
-        <script data-cfasync="false" async src="https://media.eplinx.net/js/code.min.js"></script><!-- /Eplinx.com -->
-        <p class="copyright">© 2025 Starry Systems. All rights reserved.</p>
-      </div>
+        <p>Powered by Space Cat Games</p>
+        <p class="copyright">© 2025 Nijika Softworks & Starry Systems. All rights reserved.</p>
+        <a href="https://nijikasoftworks.meowcat.site/"><img
+          src="images/nsobgo.png"
+          height="150"
+          width="500"
+        /></a>
+        <a href="https://github.com/Starry-Systems/"><img
+          src="https://avatars.githubusercontent.com/u/241321890?s=200&v=4"
+          height="150"
+        /></a>
     </div>
   </footer>
-
 
   <!-- FPS Counter -->
 <div id="fps-counter" style="
@@ -579,7 +841,145 @@ setInterval(showRandomAd, 10000);
     requestAnimationFrame(loop);
   })();
 </script>
+<!-- Auto Popup -->
+<div class="popup-overlay" id="feedbackPopup">
+  <div class="popup-container">
+    <button class="popup-close" onclick="closePopup()">&times;</button>
+    
+    <div class="popup-icon">💬</div>
+    <h2 class="popup-title">We'd Love Your Feedback!</h2>
+    <p class="popup-message">
+      Help us improve by sharing your thoughts. It only takes a minute!
+    </p>
+
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfdlnRovxc1UOXltU6nQWekLvVG9PBSjOURodBY9iAOGCVAjQ/viewform?usp=sharing&ouid=110885825274059850813" class="popup-button" target="_blank" onclick="handleFeedbackClick()">
+      Give Feedback
+    </a>
+
+    <button class="popup-dismiss" onclick="closePopup()">Maybe later</button>
+  </div>
+</div>
+
+<script>
+  // Configuration
+  const POPUP_DELAY = 2000; // Show popup after 2 seconds (in milliseconds)
+  const POPUP_STORAGE_KEY = 'feedbackPopupShown';
+
+  // Check if popup should be shown
+  function shouldShowPopup() {
+    // Check localStorage to see if user has already dismissed or clicked
+    return !localStorage.getItem(POPUP_STORAGE_KEY);
+  }
+
+  // Show the popup
+  function showPopup() {
+    if (shouldShowPopup()) {
+      setTimeout(() => {
+        document.getElementById('feedbackPopup').classList.add('active');
+      }, POPUP_DELAY);
+    }
+  }
+
+  // Close the popup
+  function closePopup() {
+    document.getElementById('feedbackPopup').classList.remove('active');
+    // Save to localStorage so popup doesn't show again
+    localStorage.setItem(POPUP_STORAGE_KEY, 'true');
+  }
+
+  // Handle feedback button click
+  function handleFeedbackClick() {
+    // Save to localStorage so popup doesn't show again
+    localStorage.setItem(POPUP_STORAGE_KEY, 'true');
+    // Link will open automatically, popup will close
+    setTimeout(closePopup, 300);
+  }
+
+  // Close popup when clicking outside
+  document.getElementById('feedbackPopup').addEventListener('click', function(e) {
+    if (e.target === this) {
+      closePopup();
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closePopup();
+    }
+  });
+
+  // Initialize - show popup on page load
+  showPopup();
+</script>
   <script src="js/themeswitcher.js"></script>
+  <div id="flag-drawer">
+    <div id="flag-drawer-tab">🏳️</div>
+    <div id="flag-drawer-content">
+      <img src="https://count.getloli.com/@:spacecatgames?name=%3Aspacecatgames&theme=original-new&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=0&prefix=0">
+      </a>
+      <br/>
+    </div>
+  </div>
+
+  <style>
+    #flag-drawer {
+      position: fixed;
+      top: 120px;
+      right: -184px; /* 220px (drawer width) - 36px (tab width) */
+      width: 220px;
+      transition: right 0.3s;
+      z-index: 10000;
+    }
+    #flag-drawer.open {
+      right: 0;
+    }
+    #flag-drawer-tab {
+      position: absolute;
+      left: -36px;
+      top: 30px;
+      width: 36px;
+      height: 60px;
+      background: #222;
+      color: #fff;
+      border-radius: 8px 0 0 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 24px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      user-select: none;
+    }
+    #flag-drawer-content {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px 0 0 8px;
+      padding: 10px 5px 10px 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      min-width: 180px;
+      min-height: 70px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow-x: auto;
+    }
+    #flag-drawer-content img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+  <script>
+    // Flag Drawer Toggle
+    document.addEventListener("DOMContentLoaded", function () {
+      const drawer = document.getElementById("flag-drawer");
+      const tab = document.getElementById("flag-drawer-tab");
+      tab.addEventListener("click", function () {
+        drawer.classList.toggle("open");
+      });
+    });
+  </script>
 </body>
 
 </html>

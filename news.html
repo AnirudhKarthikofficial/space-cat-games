@@ -12,6 +12,17 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TTZS202J2Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TTZS202J2Q');
+</script>
+
   </head>
   <body class="dark-theme">
     <div class="topnav">
@@ -22,13 +33,6 @@
       <a href="credits.html">Credits</a>
       <a href="changelog.html">Changelog</a>
       <a href="archive.html">Archive</a>
-      <a href="submitad.html">Submit Ad!</a>
-      <a
-        href="https://docs.google.com/document/d/e/2PACX-1vT-28hqhqnzJb3ABu47A7wYL6ei8MIE7DD7yGq1VrR6D7HSfrHjZlGfsneivTIdLFp16dcWPDhZhjx7/pub"
-        >Documentation</a
-      >
-      <a href="https://starry-sys.betteruptime.com/">Status</a>
-      <a href="submitad.html">Submit Ad</a>
     </div>
 
     <div class="container">
@@ -43,6 +47,47 @@
         src="https://media.eplinx.net/js/code.min.js"
       ></script>
       <!-- /Eplinx.com -->
+        <section class="news-section">
+        <h2>Development Update</h2>
+        <p class="news-date">August 28, 2025</p>
+        <p>
+          Hello!
+          Development has been on hiatus for a few weeks, but we are back once again!
+          Due to complications with those from Starry Systems (claiming they made and owned the Space Cat Games trademark), I had to go on hiatus for a few weeks.
+        </p>
+      </section>
+
+      <section class="news-section">
+        <h2>Version 15 released!</h2>
+        <p class="news-date">July 2, 2025</p>
+        <p>
+          Hello!
+          Version 15 just dropped, and I'm going to release a Development Blog soon.
+          Changes can be found in the Changelog.
+        </p>
+      </section>
+      
+      <section class="news-section">
+        <h2>Departure from Starry Systems</h2>
+        <p class="news-date">June 23, 2025</p>
+        <p>
+          Hello. I have decided to depart from Starry Systems due to personal
+          problems, and problems in the work enviroment. Space Cat Games will
+          continue to be maintained by me at Ijichi Systems. This site's
+          lifecycle has not been effected by this change Please continue being
+          the awesome people you are, Starry. - Ben, lead developer at Ijichi
+          Systems.
+        </p>
+      </section>
+
+      <section class="news-section">
+        <h2>Space Cat Games 14 has released!</h2>
+        <p class="news-date">July 6, 2025</p>
+        <p>
+          DARK THEME NO WAY!!!!!!!!!! You can now advertise for free with us,
+          just send us your ad and we will post it!
+        </p>
+      </section>
 
       <section class="news-section">
         <h2>Space Cat Games now belongs to Starry Systems!</h2>
@@ -210,54 +255,50 @@
             <a href="changelog.html">Changelog</a>
             <a href="archive.html">Archive</a>
           </div>
-          <!-- Eplinx.com / Banner / 468x60 / Full Banner --><ins
-            class="aso-zone"
-            data-zone="138908"
-          ></ins>
-          <script
-            data-cfasync="false"
-            async
-            src="https://media.eplinx.net/js/code.min.js"
-          ></script>
-          <!-- /Eplinx.com -->
-          <p class="copyright">© 2025 Space Cat Games. All rights reserved.</p>
+
+          <p class="copyright">© 2025 Nijika Softworks. All rights reserved.</p>
         </div>
       </div>
     </footer>
 
     <script src="js/main.js"></script>
     <!-- FPS Counter -->
-<div id="fps-counter" style="
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  background: rgba(20,20,20,0.8);
-  color: #0f0;
-  font-family: monospace;
-  font-size: 16px;
-  padding: 6px 12px;
-  border-radius: 6px;
-  z-index: 9999;
-  pointer-events: none;
-">FPS: --</div>
-<script>
-  (function() {
-    let lastFrame = performance.now();
-    let frames = 0;
-    let fps = 0;
-    function loop(now) {
-      frames++;
-      if (now - lastFrame >= 1000) {
-        fps = frames;
-        frames = 0;
-        lastFrame = now;
-        document.getElementById('fps-counter').textContent = 'FPS: ' + fps;
-      }
-      requestAnimationFrame(loop);
-    }
-    requestAnimationFrame(loop);
-  })();
-</script>
-  <script src="js/themeswitcher.js"></script>
+    <div
+      id="fps-counter"
+      style="
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background: rgba(20, 20, 20, 0.8);
+        color: #0f0;
+        font-family: monospace;
+        font-size: 16px;
+        padding: 6px 12px;
+        border-radius: 6px;
+        z-index: 9999;
+        pointer-events: none;
+      "
+    >
+      FPS: --
+    </div>
+    <script>
+      (function () {
+        let lastFrame = performance.now();
+        let frames = 0;
+        let fps = 0;
+        function loop(now) {
+          frames++;
+          if (now - lastFrame >= 1000) {
+            fps = frames;
+            frames = 0;
+            lastFrame = now;
+            document.getElementById("fps-counter").textContent = "FPS: " + fps;
+          }
+          requestAnimationFrame(loop);
+        }
+        requestAnimationFrame(loop);
+      })();
+    </script>
+    <script src="js/themeswitcher.js"></script>
   </body>
 </html>

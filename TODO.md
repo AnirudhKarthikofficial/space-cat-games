@@ -1,0 +1,2 @@
+- [x] Edit index.html: Add CSS to #flag-drawer-content to resize the counter image (img { max-width: 100%; height: auto; })
+- [x] Edit games.html: Add CSS to #flag-drawer-content to resize the counter image (img { max-width: 100%; height: auto; })

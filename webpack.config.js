@@ -1,3 +1,4 @@
+// THIS IS FOR DEVELOPMENT. THIS MAY BE DELETED IN DEPLOYS.
 const path = require("path");
 
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
