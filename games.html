@@ -12,6 +12,7 @@
   <script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=dirlwq03grzkjludqxjtvg"
     async="true"></script>
   <link href="css/style.css" rel="stylesheet" type="text/css">
+  <link href="games.css" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="3a050c7c-3ead-4b4e-b044-854d2f99657b"
@@ -25,18 +26,18 @@
 
     gtag('config', 'G-TTZS202J2Q');
   </script>
-  <script>(function(s){s.dataset.zone='10294144',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-    <script src="https://3nbf4.com/act/files/tag.min.js?z=10290270" data-cfasync="false" async></script>
-    <script>(function(s){s.dataset.zone='10290304',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-<script>
-  window.addEventListener('load', function () {
-    const spinner = document.getElementById('loading-spinner');
-    if (spinner) {
-      spinner.style.opacity = '0';
-      setTimeout(() => spinner.style.display = 'none', 400);
-    }
-  });
-</script>
+  <script>(function (s) { s.dataset.zone = '10294144', s.src = 'https://gizokraijaw.net/vignette.min.js' })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+  <script src="https://3nbf4.com/act/files/tag.min.js?z=10290270" data-cfasync="false" async></script>
+  <script>(function (s) { s.dataset.zone = '10290304', s.src = 'https://nap5k.com/tag.min.js' })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+  <script>
+    window.addEventListener('load', function () {
+      const spinner = document.getElementById('loading-spinner');
+      if (spinner) {
+        spinner.style.opacity = '0';
+        setTimeout(() => spinner.style.display = 'none', 400);
+      }
+    });
+  </script>
 
 <body class="dark-theme">
   <script>
@@ -99,11 +100,33 @@
     <h1>Games Collection</h1>
     <p>Browse our extensive collection of free browser games. Click on any game to start playing instantly!</p>
 
+    <!-- QoL Features Section -->
+    <div class="game-controls">
+      <div class="search-container">
+        <input type="text" id="gameSearch" class="search-input" placeholder="Search for games...">
+      </div>
 
+      <div class="controls-row">
+        <div class="sort-options">
+          <label for="gameSort">Sort by:</label>
+          <select id="gameSort" class="sort-select">
+            <option value="default">Default</option>
+            <option value="az">Name (A-Z)</option>
+            <option value="za">Name (Z-A)</option>
+          </select>
+        </div>
 
+        <button id="randomGameBtn" class="btn random-btn">
+          <span class="icon">🎲</span> Random Game
+        </button>
+      </div>
 
+      <div class="game-count">
+        Showing <span id="visibleCount">0</span> of <span id="totalCount">0</span> games
+      </div>
+    </div>
 
-    <div class="games-grid">
+    <div class="games-grid" id="gamesGrid">
 
       <div class="game-item">
         <button type="button" onclick="window.location.href='/games/fifa2007.html'" title="FIFA 2007">
@@ -248,12 +271,6 @@
         <p>Doodle Jump</p>
       </div>
 
-      <div class="game-item">
-        <button type="button" onclick="window.location.href='games/snake.html'" title="Snake Game">
-          <img src="https://i.ibb.co/PGMhS950/images-3.jpg" alt="Snake Game">
-        </button>
-        <p>Snake Game</p>
-      </div>
 
       <div class="game-item">
         <button type="button" onclick="window.location.href='games/pingpong.html'" title="Ping Pong">
@@ -702,6 +719,79 @@
         <p>Melon Playground</p>
       </div>
 
+
+      <div class="game-item">
+        <button type="button" onclick="window.location.href='games/Baldi\'s Basics Plus.html'"
+          title="Baldi's Basics Plus">
+          <img src="games/baldiicon.png" alt="Baldi's Basics Plus">
+        </button>
+        <p>Baldi's Basics Plus</p>
+      </div>
+
+      <div class="game-item">
+        <button type="button" onclick="window.location.href='games/DON\'T YOU LECTURE ME.html'"
+          title="DON'T YOU LECTURE ME">
+          <img src="games/lecturemeicon.png" alt="DON'T YOU LECTURE ME">
+        </button>
+        <p>DON'T YOU LECTURE ME</p>
+      </div>
+
+      <div class="game-item">
+        <button type="button" onclick="window.location.href='games/Papa\'s Donuteria.html'" title="Papa's Donuteria">
+          <img src="games/doughnutiocn.png" alt="Papa's Donuteria">
+        </button>
+        <p>Papa's Donuteria</p>
+      </div>
+
+      <div class="game-item">
+        <button type="button" onclick="window.location.href='games/Paper.io 2.html'" title="Paper.io 2">
+          <img src="https://i.ibb.co/VYFygR7L/images-1.jpg" alt="Paper.io 2">
+        </button>
+        <p>Paper.io 2</p>
+      </div>
+
+      <div class="game-item">
+        <button type="button" onclick="window.location.href='games/Parappa The Rapper.html'" title="Parappa The Rapper">
+          <img src="games/parappaicon.png" alt="Parappa The Rapper">
+        </button>
+        <p>Parappa The Rapper</p>
+      </div>
+
+      <div class="game-item">
+        <button type="button" onclick="window.location.href='games/Sandboxels.html'" title="Sandboxels">
+          <img src="games/sandboxels-icon.png" alt="Sandboxels">
+        </button>
+        <p>Sandboxels</p>
+      </div>
+
+      <div class="game-item">
+        <button type="button" onclick="window.location.href='games/Slither.io.html'" title="Slither.io">
+          <img src="games/slitherio-icon.png" alt="Slither.io">
+        </button>
+        <p>Slither.io</p>
+      </div>
+
+      <div class="game-item">
+        <button type="button" onclick="window.location.href='games/Slowroads.html'" title="Slowroads">
+          <img src="games/slowroads-icon.png" alt="Slowroads">
+        </button>
+        <p>Slowroads</p>
+      </div>
+
+      <div class="game-item">
+        <button type="button" onclick="window.location.href='games/Tunnel Rush.html'" title="Tunnel Rush">
+          <img src="games/tunnelrush.png" alt="Tunnel Rush">
+        </button>
+        <p>Tunnel Rush</p>
+      </div>
+
+      <div class="game-item">
+        <button type="button" onclick="window.location.href='games/Twisted Rope 3D.html'" title="Twisted Rope 3D">
+          <img src="games/rope-icon.png" alt="Twisted Rope 3D">
+        </button>
+        <p>Twisted Rope 3D</p>
+      </div>
+
     </div>
 
 
@@ -768,6 +858,8 @@
   </script>
 
 
+  <button id="backToTop" title="Go to top">↑</button>
+  <script src="js/games-features.js"></script>
   <script src="js/themeswitcher.js"></script>
   <div id="flag-drawer">
     <div id="flag-drawer-tab">🏳️</div>
