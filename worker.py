@@ -9,6 +9,10 @@ MODEL = "tinyllama"
 SLEEP_SECONDS = 1
 MAX_LINES = 100
 EXTS = {".js", ".ts", ".jsx", ".tsx", ".html", ".css"}
+# `WORKER_DIRS_ENV` may be either:
+# - a comma-separated literal list like "js, css, ." (the token `.` means repo root files), or
+# - the name of an environment variable that contains such a comma-separated list.
+WORKER_DIRS_ENV = "js, css"  # literal list or env-var name (optional)
 
 logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(message)s")
 
@@ -22,9 +26,35 @@ def run(cmd):
 def clean_repo():
     return run("git status --porcelain").strip() == ""
 
+def get_allowed_dirs(files):
+    spec = WORKER_DIRS_ENV
+
+    # If spec contains a comma assume it's a literal list provided in the file.
+    # Otherwise treat it as the name of an env var and try to read it.
+    if "," not in spec:
+        spec = os.environ.get(spec, "")
+
+    if spec:
+        allowed = [d.strip() for d in spec.split(",") if d.strip()]
+        return allowed[:3]
+
+    # discover top-level directories from tracked files and pick first 3
+    tops = []
+    for f in files:
+        if "/" in f:
+            top = f.split("/", 1)[0]
+            if top not in tops:
+                tops.append(top)
+                if len(tops) >= 3:
+                    break
+    return tops
+
+
 def get_files():
     files = run("git ls-files").splitlines()
-    return [f for f in files if Path(f).suffix in EXTS]
+    allowed = set(get_allowed_dirs(files))
+    logging.info("Allowed top-level dirs: %s", ",".join(allowed) if allowed else "(none)")
+    return [f for f in files if Path(f).suffix in EXTS and (f.split('/', 1)[0] in allowed)]
 
 def ask_ollama(prompt):
     try:
@@ -59,7 +89,7 @@ def apply_patch(patch):
     except Exception:
         logging.exception("Failed to apply patch")
 
-print("AI maintainer (Python, memory-safe) running")
+print("AI maintainer running")
 
 while True:
     print("\n=== Cycle start ===")
@@ -88,6 +118,7 @@ Do NOT change APIs.
 Do NOT reformat unrelated code.
 Post your changes in changelog.html
 Output ONLY a unified git diff.
+Please note you cannot see the games/ folder.
 
 File: {file}
 
