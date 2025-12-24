@@ -12,7 +12,7 @@ EXTS = {".js", ".ts", ".jsx", ".tsx", ".html", ".css"}
 # `WORKER_DIRS_ENV` may be either:
 # - a comma-separated literal list like "js, css, ." (the token `.` means repo root files), or
 # - the name of an environment variable that contains such a comma-separated list.
-WORKER_DIRS_ENV = "js, css"  # literal list or env-var name (optional)
+WORKER_DIRS_ENV = "js, css, ."  # literal list or env-var name (optional)
 
 logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(message)s")
 
