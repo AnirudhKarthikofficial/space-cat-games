@@ -104,6 +104,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     } catch (err) {
         console.error(err);
-        container.innerHTML = "<p>Unable to load GitHub stats.</p>";
+        container.innerHTML = "<p>Unable to load GitHub stats (GitHub still computing, please try again later.).</p>";
     }
 });
