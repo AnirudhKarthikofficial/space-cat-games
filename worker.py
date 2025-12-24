@@ -48,8 +48,9 @@ while True:
         print("Repo dirty, skipping.")
         time.sleep(SLEEP_SECONDS)
         continue
-
+    print("Fetching origin...")
     run("git fetch origin")
+    print("checking out...")
     run("git checkout -B main origin/main")
 
     for file in get_files():
