@@ -30,10 +30,10 @@ def clean_repo():
 def get_allowed_dirs(files):
     spec = WORKER_DIRS_ENV
 
-    # If spec contains a comma assume it's a literal list provided in the file.
+    # If spec contains a comma, assume it's a literal list provided in the file.
     # Otherwise treat it as the name of an env var and try to read it.
     if "," not in spec:
-        spec = os.environ.get(speupdate to allow root directoryc, "")
+        spec = os.environ.get(spec, "")
 
     if spec:
         allowed = [d.strip() for d in spec.split(",") if d.strip()]
@@ -44,11 +44,14 @@ def get_allowed_dirs(files):
     for f in files:
         if "/" in f:
             top = f.split("/", 1)[0]
-            if top not in tops:
-                tops.append(top)
-                if len(tops) >= 3:
-                    break
+        else:
+            top = "."  # root-level file
+        if top not in tops:
+            tops.append(top)
+            if len(tops) >= 3:
+                break
     return tops
+
 
 
 def get_files():
