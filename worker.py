@@ -13,6 +13,7 @@ EXTS = {".js", ".ts", ".jsx", ".tsx", ".html", ".css"}
 # - a comma-separated literal list like "js, css, ." (the token `.` means repo root files), or
 # - the name of an environment variable that contains such a comma-separated list.
 WORKER_DIRS_ENV = "js, css, ."  # literal list or env-var name (optional)
+BRANCH = "main"
 
 logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(message)s")
 
@@ -32,7 +33,7 @@ def get_allowed_dirs(files):
     # If spec contains a comma assume it's a literal list provided in the file.
     # Otherwise treat it as the name of an env var and try to read it.
     if "," not in spec:
-        spec = os.environ.get(spec, "")
+        spec = os.environ.get(speupdate to allow root directoryc, "")
 
     if spec:
         allowed = [d.strip() for d in spec.split(",") if d.strip()]
@@ -101,7 +102,7 @@ while True:
     print("Fetching origin...")
     run("git fetch origin")
     print("checking out...")
-    run("git checkout -B main origin/main")
+    run(f"git checkout -B {BRANCH} origin/{BRANCH}")
 
     for file in get_files():
         try:
@@ -141,8 +142,10 @@ File: {file}
             continue
 
     if run("git diff --stat").strip():
+        print("Committing changes...")
         run('git commit -am "chore: automated code improvements"')
-        run("git push -u origin ai-maintenance")
+        print("Pushing changes...")
+        run(f"git push -u origin {BRANCH}")
         print("Changes committed and pushed.")
     else:
         print("No changes.")
