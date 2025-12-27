@@ -31,6 +31,15 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* Focus outline for interactive elements */
+button:focus,
+a:focus,
+.game-thumbnail:focus,
+#flag-drawer-tab:focus {
+  outline: 2px solid #ffcc00;   /* high‑contrast, matches the site’s accent */
+  outline-offset: 2px;
+}
+
 /* Tooltip text */
 .game-thumbnail::after {
   content: attr(data-description) " — " attr(data-plays) " plays";
