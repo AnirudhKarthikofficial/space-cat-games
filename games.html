@@ -84,6 +84,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     transition: opacity 0.4s;
   ">
     <div style="
@@ -94,40 +95,12 @@
       height: 64px;
       animation: spin 1s linear infinite;
     "></div>
+    <p style="color: #fff; font-size: 18px; margin-top: 20px;">Loading...</p>
   </div>
   <noscript>
     <h1>Hey there!</h1>
     <h2>You need Javascript enabled to view this site!</h2>
     <p>Error Code = 0x00004</p>
   </noscript>
-  <div class="topnav">
-    <a href="index.html">Home</a>
-    <a href="games.html">Games</a>
-    <a href="https://nijikasoftworks.meowcat.site/">News</a>
-    <a href="opensource.html">Source Code</a>
-    <a href="credits.html">Credits</a>
-    <a href="changelog.html">Changelog</a>
-    <a href="archive.html">Archive</a>
-    <a href="https://neurontechnologies.flarum.cloud/d/3-space-cat-games-general">Help</a>
-    <div class="loading-indicator" id="nav-loading-indicator">
-      <div class="spinner"></div>
-    </div>
-  </div>
-  <!-- ...existing code... -->
-
-  <script>
-    const navLoadingIndicator = document.getElementById('nav-loading-indicator');
-
-    document.addEventListener('click', (event) => {
-      if (event.target.tagName === 'A') {
-        navLoadingIndicator.style.display = 'block';
-        setTimeout(() => {
-          navLoadingIndicator.style.display = 'none';
-        }, 1000);
-      }
-    });
-  </script>
-</body>
-
-</html>
+  <div class="top 
 ```
