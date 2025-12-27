@@ -63,9 +63,37 @@
       }
     }
   </style>
+  <script>
+    window.addEventListener('load', function () {
+      const spinner = document.getElementById('loading-spinner');
+      if (spinner) {
+        spinner.style.opacity = '0';
+        setTimeout(() => spinner.style.display = 'none', 400);
+      }
+    });
+  </script>
 </head>
 
 <body class="dark-theme">
+  <div id="loading-spinner" style="
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(30,32,34,0.95);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.4s;
+  ">
+    <div style="
+      border: 8px solid #eee;
+      border-top: 8px solid #e74c3c;
+      border-radius: 50%;
+      width: 64px;
+      height: 64px;
+      animation: spin 1s linear infinite;
+    "></div>
+  </div>
   <script>
     var redirectValue = 1; // 0 = no redirect, 1 = redirect to maintain.html
 
@@ -80,38 +108,6 @@
     <h2>You need JavaScript enabled to view this site!</h2>
     <p>Error Code = 0x00004</p>
   </noscript>
-
-  <div class="topnav">
-    <a href="index.html">Home</a>
-    <a href="games.html">Games</a>
-    <a href="https://nijikasoftworks.meowcat.site/">News</a>
-    <a href="opensource.html">Source Code</a>
-    <a href="credits.html">Credits</a>
-    <a href="changelog.html">Changelog</a>
-    <a href="archive.html">Archive</a>
-    <a href="https://neurontechnologies.flarum.cloud/d/3-space-cat-games-general">Help</a>
-    <div class="loading-indicator" id="nav-loading-indicator">
-      <div class="spinner"></div>
-    </div>
-  </div>
-
-  <div class="hero">
-    <div 
-      <!-- ...existing code... -->
-  </div>
-
-  <script>
-    const navLoadingIndicator = document.getElementById('nav-loading-indicator');
-
-    document.addEventListener('click', (event) => {
-      if (event.target.tagName === 'A') {
-        navLoadingIndicator.style.display = 'block';
-        setTimeout(() => {
-          navLoadingIndicator.style.display = 'none';
-        }, 1000);
-      }
-    });
-  </script>
 </body>
 
 </html>
