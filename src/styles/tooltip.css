@@ -1,45 +1,26 @@
-/* Subtle tooltip styling for icons */
-[data-tooltip] {
+/* Tooltip Styles for Icons */
+[class*="icon-"][data-tooltip] {
   position: relative;
-  cursor: default;
+  cursor: pointer;
 }
-
-/* Tooltip bubble */
-[data-tooltip]::after {
+[class*="icon-"][data-tooltip]::after {
   content: attr(data-tooltip);
   position: absolute;
-  bottom: 125%;
-  left: 50%;
-  transform: translateX(-50%);
+  white-space: nowrap;
   background: rgba(0, 0, 0, 0.75);
   color: #fff;
-  padding: 3px 6px;
+  padding: 2px 6px;
   border-radius: 4px;
   font-size: 0.75rem;
-  white-space: nowrap;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.2s ease-in-out;
-  z-index: 10;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 1000;
 }
-
-/* Tooltip arrow */
-[data-tooltip]::before {
-  content: "";
-  position: absolute;
-  bottom: 115%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 5px;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, 0.75) transparent transparent transparent;
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
-  z-index: 10;
-}
-
-/* Show tooltip on hover */
-[data-tooltip]:hover::after,
-[data-tooltip]:hover::before {
+[class*="icon-"][data-tooltip]:hover::after {
   opacity: 1;
+  transform: translateX(-50%) translateY(-8px);
 }
