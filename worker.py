@@ -69,7 +69,7 @@ def brainstorm_and_execute():
     except Exception as e: log_action(f"⚠️ Git Error: {e}")
 
     # 1. Idea Stage
-    task_prompt = "Suggest ONE tiny UI improvement for a gaming site. Be brief."
+    task_prompt = "Suggest ONE tiny UI improvement for a gaming site. Be brief. Always generate a HTML, JS or CSS file based on your edits, and never TSX, JSX, etc."
     task, provider = ask_ai_with_fallback(task_prompt)
 
     if not task:
