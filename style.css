@@ -9,7 +9,8 @@
   border-radius: 5px;
   cursor: pointer;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
   pointer-events: none;
 }
 #back-to-top:focus-visible {
@@ -18,7 +19,8 @@
 }
 
 #back-to-top.show {
-  opacity: 1;
+  opacity: 0.6;
+  transform: translateY(0);
   pointer-events: auto;
 }
 
