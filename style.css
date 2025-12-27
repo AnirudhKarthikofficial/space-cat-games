@@ -12,6 +12,10 @@
   transition: opacity 0.3s ease;
   pointer-events: none;
 }
+#back-to-top:focus-visible {
+  outline: 2px solid #ffcc00;
+  outline-offset: 2px;
+}
 
 #back-to-top.show {
   opacity: 1;
