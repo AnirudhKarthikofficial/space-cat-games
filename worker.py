@@ -3,7 +3,6 @@ import re
 import git
 import time
 import datetime
-import random
 from google import genai
 from groq import Groq
 from dotenv import load_dotenv
@@ -13,15 +12,13 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 load_dotenv(os.path.join(script_dir, '.env'))
 
 # --- CONFIG ---
-FILES_TO_WATCH = ["index.html", "games.html", "style.css"]
 LOG_FILE = "maintainer.log"
 INTERVAL = 3600
 
-# THE MODEL LIST: Priorities based on your confirmed access
 MODEL_POOL = [
+    {"name": "Gemini 2.0 Flash Lite", "provider": "google", "id": "gemini-2.0-flash-lite"},
     {"name": "GPT-OSS 120B", "provider": "groq", "id": "openai/gpt-oss-120b"},
-    {"name": "Llama 3.3 70B", "provider": "groq", "id": "llama-3.3-70b-versatile"},
-    {"name": "Whisper", "provider": "groq", "id": "whisper-large-v3"},
+    {"name": "Llama 3.3 70B", "provider": "groq", "id": "llama-3.3-70b-versatile"}
 ]
 
 gemini_client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"), http_options={'api_version': 'v1beta'})
@@ -33,53 +30,50 @@ def log_action(message):
     print(msg)
     with open(LOG_FILE, "a") as f: f.write(msg + "\n")
 
-def ask_ai_with_fallback(prompt, reasoning="medium"):
-    """Cycles through the entire list of models if one fails."""
-    # We copy the pool so we can shuffle it or modify it locally
-    current_pool = MODEL_POOL.copy()
+def find_file_path(target_name):
+    """Searches subfolders to find the actual path of a filename."""
+    for root, dirs, files in os.walk("."):
+        if ".git" in root: continue
+        if target_name in files:
+            return os.path.join(root, target_name).replace("./", "")
+    return None
 
-    for model in current_pool:
+def ask_ai_with_fallback(prompt, reasoning="medium"):
+    for model in MODEL_POOL:
         try:
             if model["provider"] == "google":
                 res = gemini_client.models.generate_content(model=model["id"], contents=prompt)
                 return res.text, model["name"]
-
             elif model["provider"] == "groq":
-                # Only gpt-oss uses the reasoning_effort parameter
                 extra = {"reasoning_effort": reasoning} if "gpt-oss" in model["id"] else {}
                 res = groq_client.chat.completions.create(
-                    model=model["id"],
-                    messages=[{"role": "user", "content": prompt}],
-                    **extra
+                    model=model["id"], messages=[{"role": "user", "content": prompt}], **extra
                 )
                 return res.choices[0].message.content, model["name"]
-
         except Exception as e:
-            err_msg = str(e).splitlines()[0] # Get just the first line of the error
-            log_action(f"⏭️ Skipping {model['name']} -> {err_msg[:60]}...")
-            continue
-
+            log_action(f"⏭️ {model['name']} failed. Trying next...")
     return None, None
 
 def brainstorm_and_execute():
+    # Sync Repo
     try:
         repo = git.Repo(".")
         repo.git.reset('--hard')
         repo.remotes.origin.pull()
-    except Exception as e: log_action(f"⚠️ Git Error: {e}")
+    except Exception as e: log_action(f"Git Error: {e}")
 
-    # 1. Idea Stage
-    task_prompt = "Suggest ONE tiny UI improvement for a gaming site. Be brief. Always generate a HTML, JS or CSS file based on your edits, and never TSX, JSX, etc."
-    task, provider = ask_ai_with_fallback(task_prompt)
-
-    if not task:
-        log_action("❌ CRITICAL: All models in the list failed (Quotas hit).")
-        return False
-
+    # 1. Brainstorm
+    task, provider = ask_ai_with_fallback("Suggest ONE tiny UI improvement. Be brief.")
+    if not task: return False
     log_action(f"💡 TASK ({provider}): {task[:60]}...")
 
-    # 2. Execution Stage
-    exec_prompt = f"ACT ONLY AS A SEARCH/REPLACE GENERATOR.\nTask: {task}\nFormat:\nFILE: [filename]\nSEARCH:\n[exact code]\nREPLACE:\n[new code]\nEND"
+    # 2. Execute with path & creation logic
+    exec_prompt = (
+        f"ACT AS A SEARCH/REPLACE ENGINE. NO PROSE.\n"
+        f"Task: {task}\n"
+        f"RULE: To create a NEW file, leave SEARCH empty and put content in REPLACE.\n"
+        f"Format:\nFILE: [path/to/file]\nSEARCH:\n[code]\nREPLACE:\n[code]\nEND"
+    )
     response, provider = ask_ai_with_fallback(exec_prompt, reasoning="high")
 
     if response:
@@ -89,31 +83,45 @@ def brainstorm_and_execute():
             r_match = re.search(r"REPLACE:\n([\s\S]*?)\nEND", response)
 
             if all([f_match, s_match, r_match]):
-                fname = f_match.group(1).strip()
+                suggested_path = f_match.group(1).strip()
                 s_block = s_match.group(1).strip()
                 r_block = r_match.group(1).strip()
 
-                with open(fname, "r") as f: content = f.read()
-                if s_block in content:
-                    with open(fname, "w") as f: f.write(content.replace(s_block, r_block))
-                    log_action(f"✅ Applied change via {provider}.")
-                    repo = git.Repo(".")
-                    repo.git.add(A=True)
-                    repo.index.commit(f"auto({provider}): {task[:50]}")
-                    repo.remote().push()
-                    return True
-        except Exception as e:
-            log_action(f"🛡️ Apply failed: {e}")
+                # Logic A: Create New File
+                if not s_block:
+                    log_action(f"📂 Creating: {suggested_path}")
+                    os.makedirs(os.path.dirname(suggested_path) or ".", exist_ok=True)
+                    with open(suggested_path, "w") as f: f.write(r_block)
+                    actual_path = suggested_path
 
+                # Logic B: Update Existing File
+                else:
+                    actual_path = find_file_path(suggested_path) or suggested_path
+                    if os.path.exists(actual_path):
+                        with open(actual_path, "r") as f: content = f.read()
+                        if s_block in content:
+                            with open(actual_path, "w") as f: f.write(content.replace(s_block, r_block))
+                        else:
+                            log_action(f"🛡️ Search block not found in {actual_path}")
+                            return False
+                    else:
+                        log_action(f"🛡️ File {suggested_path} not found.")
+                        return False
+
+                # Commit & Push
+                repo.git.add(A=True)
+                repo.index.commit(f"auto({provider}): {task[:50]}")
+                repo.remote().push()
+                log_action(f"✅ Success: {actual_path} modified.")
+                return True
+        except Exception as e: log_action(f"🔥 Error: {e}")
     return False
 
 if __name__ == "__main__":
-    log_action("🦾 Ultra-Resilient AI Maintainer Active.")
+    log_action("🦾 Multi-Model Creator Mode Online.")
     while True:
         try:
-            success = brainstorm_and_execute()
-        except Exception as e:
-            log_action(f"🔥 Script Crash Prevented: {e}")
-
-        log_action(f"💤 Sleeping for {INTERVAL/60}m...")
+            brainstorm_and_execute()
+        except KeyboardInterrupt: break
+        except Exception as e: log_action(f"CRASH: {e}")
         time.sleep(INTERVAL)
