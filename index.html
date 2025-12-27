@@ -463,6 +463,13 @@
     if (window.scrollY > 300) btn.classList.add('show');
     else btn.classList.remove('show');
   });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Home' || (e.ctrlKey && e.key === 'ArrowUp')) {
+      const btn = document.getElementById('back-to-top');
+      if (btn) btn.click();
+    }
+  });
 </script>
 
 </html>
