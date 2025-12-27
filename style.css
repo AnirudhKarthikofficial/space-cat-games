@@ -23,6 +23,13 @@
   transform: translateY(0);
   pointer-events: auto;
 }
+#back-to-top.show:hover,
+#back-to-top.show:focus,
+#back-to-top.show:focus-visible {
+  opacity: 0.9;
+  background-color: #ffcc00;
+  color: #000;
+}
 
 /* Tooltip for game thumbnails */
 .game-thumbnail {
