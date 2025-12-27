@@ -17,6 +17,10 @@
   outline: 2px solid #ffcc00;
   outline-offset: 2px;
 }
+#back-to-top:focus-visible {
+  outline: 2px solid #ffcc00;
+  outline-offset: 2px;
+}
 
 #back-to-top.show {
   opacity: 0.6;
