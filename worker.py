@@ -11,7 +11,7 @@ load_dotenv()
 REPO_PATH = "."
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 BRANCH_NAME = "main"
-INTERVAL = 5
+INTERVAL = 600  # 600 seconds = 10 minutes
 
 def generate_commit_message(diff_text):
     client = Groq(api_key=GROQ_API_KEY)
@@ -19,7 +19,7 @@ def generate_commit_message(diff_text):
 
     chat_completion = client.chat.completions.create(
         messages=[{"role": "user", "content": prompt}],
-        model="llama-3.1-8b-instant",
+        model="llama3-8b-8192",
     )
     return chat_completion.choices[0].message.content.strip()
 
