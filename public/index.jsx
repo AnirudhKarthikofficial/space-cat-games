@@ -39,7 +39,7 @@
         <a href="games.tsx">Games</a>
         <a href="https://nijikasoftworks.meowcat.site/">News</a>
         <a href="opensource.jsx">Source Code</a>
-        <a href="credits.html">Credits</a>
+        <a href="credits.jsx">Credits</a>
         <a href="changelog.html">Changelog</a>
         <a href="archive.jsx">Archive</a>
         <a href="https://neurontechnologies.flarum.cloud/d/3-space-cat-games-general">
