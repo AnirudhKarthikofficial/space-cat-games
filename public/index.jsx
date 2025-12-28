@@ -41,7 +41,7 @@
         <a href="opensource.html">Source Code</a>
         <a href="credits.html">Credits</a>
         <a href="changelog.html">Changelog</a>
-        <a href="archive.html">Archive</a>
+        <a href="archive.jsx">Archive</a>
         <a href="https://neurontechnologies.flarum.cloud/d/3-space-cat-games-general">
             Help
         </a>
