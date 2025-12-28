@@ -13,7 +13,7 @@
     </noscript>
     <div className="topnav">
         <a href="index.jsx">Home</a>
-        <a href="games.html">Games</a>
+        <a href="games.jsx">Games</a>
         <a href="https://nijikasoftworks.meowcat.site/">News</a>
         <a href="opensource.jsx">Source Code</a>
         <a href="credits.html">Credits</a>

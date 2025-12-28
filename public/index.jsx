@@ -36,7 +36,7 @@
     </noscript>
     <div className="topnav">
         <a href="index.jsx">Home</a>
-        <a href="games.html">Games</a>
+        <a href="games.tsx">Games</a>
         <a href="https://nijikasoftworks.meowcat.site/">News</a>
         <a href="opensource.jsx">Source Code</a>
         <a href="credits.html">Credits</a>
@@ -55,7 +55,7 @@
             />
             <div id="random-tip" className="random-tip" />
             <br />
-            <a href="games.html" className="btn">
+            <a href="games.tsx" className="btn">
                 Play Now
             </a>
         </div>
