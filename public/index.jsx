@@ -38,7 +38,7 @@
         <a href="index.jsx">Home</a>
         <a href="games.html">Games</a>
         <a href="https://nijikasoftworks.meowcat.site/">News</a>
-        <a href="opensource.html">Source Code</a>
+        <a href="opensource.jsx">Source Code</a>
         <a href="credits.html">Credits</a>
         <a href="changelog.html">Changelog</a>
         <a href="archive.jsx">Archive</a>

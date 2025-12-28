@@ -9,14 +9,10 @@
         <a href="index.jsx">Home</a>
         <a href="games.html">Games</a>
         <a href="https://nijikasoftworks.meowcat.site/">News</a>
-        <a href="opensource.html">Source Code</a>
+        <a href="opensource.jsx">Source Code</a>
         <a href="credits.html">Credits</a>
         <a href="changelog.html">Changelog</a>
         <a href="archive.jsx">Archive</a>
-        <a href="submitad.html">Submit Ad!</a>
-        <a href="https://docs.google.com/document/d/e/2PACX-1vT-28hqhqnzJb3ABu47A7wYL6ei8MIE7DD7yGq1VrR6D7HSfrHjZlGfsneivTIdLFp16dcWPDhZhjx7/pub">
-            Documentation
-        </a>
     </div>
     <div className="container">
         <h1>Welcome to the Archive</h1>
