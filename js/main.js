@@ -1,5 +1,15 @@
-const owo = require("@zuzak/owo");
-console.log("Loaded Packages from Yarn!");
+// Make require usage safe in browsers (avoid ReferenceError when `require` is not defined)
+let owo = null;
+if (typeof require !== 'undefined') {
+  try {
+    owo = require("@zuzak/owo");
+    console.log("Loaded Packages from Yarn!");
+  } catch (err) {
+    console.warn("Could not require @zuzak/owo:", err);
+  }
+} else {
+  console.log("`require` is not available in this environment; skipping @zuzak/owo import.");
+}
 console.log(
   "Space Cat Games (C) Starry Systems. Origially created by Team Astrocat."
 );
