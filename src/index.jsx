@@ -69,7 +69,7 @@ export default function Home() {
                     <div id="random-tip" className="random-tip">{tip}</div>
 
                     <br />
-                    <a href="/games" className="btn">Play Now</a>
+                    <a href="/games/index.html" className="btn">Play Now</a>
                 </div>
             </div>
 

@@ -1,7 +1,7 @@
 import react from "react";
 import { Helmet } from "react-helmet";
 
-export default function OpenSource() {
+export default function opensource() {
     return (
         <>
     <meta charSet="utf-8" />

@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet";
 import React from "react";
 
-export default function Archive() {
+export default function archive() {
     return (
         <>
             <Helmet>
