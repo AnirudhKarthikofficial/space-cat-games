@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet";
 import React from "react";
+import Navbar from "./components/navbar";
 
 export default function archive() {
     return (
@@ -9,15 +10,7 @@ export default function archive() {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             </Helmet>
 
-            <div className="topnav">
-                <a href="/">Home</a>
-                <a href="/games">Games</a>
-                <a href="https://nijikasoftworks.meowcat.site/">News</a>
-                <a href="/opensource">Source Code</a>
-                <a href="/credits">Credits</a>
-                <a href="/changelog">Changelog</a>
-                <a href="/archive">Archive</a>
-            </div>
+            <Navbar />
 
             <div className="container">
                 <h1>Welcome to the Archive</h1>
@@ -170,4 +163,3 @@ export default function archive() {
         </>
     );
 }
-

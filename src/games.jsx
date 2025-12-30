@@ -2,44 +2,66 @@
  * Copyright (c) Starry Systems and Nijika Softworks.
  */
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Games() {
-    // compute runtime src to avoid Vite static resolution warnings
-    const iframeSrc = (typeof window !== 'undefined') ? `${window.location.origin}/games.html` : '/games.html';
+    const [safeHtml, setSafeHtml] = useState(null);
 
-    /*
-      Sandbox settings:
-      - We intentionally DO NOT include `allow-same-origin` for stronger isolation.
-      - We allow scripts/forms/popups so the static page can generally run, but because
-        the iframe will be treated as a unique origin it cannot access the parent page.
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
 
-      If you need the embedded page to share cookies / same-origin access with the host,
-      change sandbox to include `allow-same-origin` but be aware that reduces isolation.
-    */
-    const sandboxAttrs = "allow-scripts allow-forms allow-popups allow-modals";
+        let cancelled = false;
+
+        const rewriteRelative = (html) => {
+            return html
+                .replace(/src=(['"])(?!https?:|\/|data:)(.*?)\1/gi, (m, quote, path) => `src=${quote}/${path}${quote}`)
+                .replace(/href=(['"])(?!https?:|\/|mailto:|#)(.*?)\1/gi, (m, quote, path) => `href=${quote}/${path}${quote}`)
+                .replace(/url\((['"]?)(?!https?:|\/|data:|#)(.*?)\1\)/gi, (m, quote, path) => `url(${quote}/${path}${quote})`);
+        };
+
+        // Fetch the static games.html that lives in public/
+        fetch('/games.html', { cache: 'no-store' })
+            .then(r => {
+                if (!r.ok) throw new Error('Failed to fetch games.html');
+                return r.text();
+            })
+            .then(html => {
+                if (cancelled) return;
+                setSafeHtml(rewriteRelative(html));
+            })
+            .catch(err => {
+                console.error('Error loading games.html for iframe:', err);
+            });
+
+        return () => { cancelled = true; };
+    }, []);
+
+    const sandbox = "allow-scripts allow-forms allow-popups allow-modals";
+
+    // While loading, render a lightweight placeholder to avoid flashing other page text.
+    if (!safeHtml) {
+        return (
+            <div style={{ width: '100%', height: '100vh', margin: 0, padding: 0 }}>
+                <iframe
+                    title="Space Cat Games - Games"
+                    src="/games.html"
+                    style={{ width: '100%', height: '100%', border: '0' }}
+                    sandbox={sandbox}
+                    referrerPolicy="no-referrer"
+                />
+            </div>
+        );
+    }
 
     return (
         <div style={{ width: '100%', height: '100vh', margin: 0, padding: 0 }}>
             <iframe
                 title="Space Cat Games - Games"
-                src={iframeSrc}
+                srcDoc={safeHtml}
                 style={{ width: '100%', height: '100%', border: '0' }}
-                sandbox={sandboxAttrs}
+                sandbox={sandbox}
                 referrerPolicy="no-referrer"
             />
-
-            {/* Fallback for users/browsers that block iframes */}
-            <noscript>
-                <div style={{ padding: 16 }}>
-                    <p>
-                        This site embeds the static games listing in an isolated frame. If you cannot see
-                        the embedded site, open it directly:
-                        {' '}
-                        <a href="/games.html" target="_blank" rel="noopener noreferrer">Open games page</a>.
-                    </p>
-                </div>
-            </noscript>
         </div>
     );
 }
