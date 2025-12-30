@@ -71,7 +71,6 @@ yarn start
 ```
 
 This usually starts a dev server (commonly at `http://localhost:3000/`) with hot reloading.  
-If the project uses a different script name, check the `scripts` section in `package.json`.
 
 ---
 
