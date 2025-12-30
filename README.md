@@ -233,4 +233,3 @@ Contributions are welcome! Suggested workflow:
    - A clear description
    - Testing or verification steps
 
-Please follow any existing code style and include tests or manual verification steps if relevant.
