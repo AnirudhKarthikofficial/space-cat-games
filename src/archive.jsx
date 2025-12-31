@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet";
 import React from "react";
 import Navbar from "./components/navbar";
 
-export default function archive() {
+export default function Archive() {
     return (
         <>
             <Helmet>
