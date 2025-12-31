@@ -49,29 +49,7 @@ Pull requests that do not follow this format will fail CI checks.
 
 * * *
 
-2\. Single Commit Per Pull Request
-----------------------------------
-
-Each pull request must contain **exactly one commit**.
-
-This helps keep the commit history clean and makes changes easier to review and revert.
-
-### How to comply
-
-*   Squash your commits before opening a pull request, or
-*   Use a squash merge when merging
-
-If you already have multiple commits, you can squash them locally:
-
-    git rebase -i HEAD~N
-
-Then force-push the result:
-
-    git push --force
-
-* * *
-
-3\. Skipping the PR Title Check
+2\. Skipping the PR Title Check
 -------------------------------
 
 If a pull request has the label:
@@ -84,7 +62,7 @@ This is intended for maintainers or exceptional cases only.
 
 * * *
 
-4\. General Guidelines
+3\. General Guidelines
 ----------------------
 
 *   Keep changes focused and minimal
