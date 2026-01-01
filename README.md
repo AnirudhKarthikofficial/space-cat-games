@@ -1,6 +1,7 @@
 # Space Cat Games
 
 **The free and open source way to host a games website!**
+
 ![Vercel Deploy](https://deploy-badge.vercel.app/vercel/spacecatgames) 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f795125c-9403-49b7-9e84-ae0c0c4df19e/deploy-status)](https://app.netlify.com/projects/spacecatgame/deploys)
 
