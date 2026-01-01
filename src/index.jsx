@@ -22,9 +22,9 @@ export default function Home() {
     useEffect(() => {
         // Header randomization
         if (Math.random() < 0.1) {
-            setHeader("スペースキャットゲーム バージョン17.1");
+            setHeader("スペースキャットゲーム バージョン18");
         } else {
-            setHeader("Welcome to Space Cat Games 17.4 - Codename 64");
+            setHeader("Welcome to Space Cat Games 18 - Hello, React!");
         }
 
         // Random tips
