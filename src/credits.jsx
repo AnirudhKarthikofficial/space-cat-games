@@ -161,6 +161,8 @@ export default function Credits() {
                     </ul>
                 </section>
             </div>
+
+            <Footer />
         </>
     );
 }

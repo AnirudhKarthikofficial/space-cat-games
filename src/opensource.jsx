@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import Navbar from "./components/navbar";
+import Footer from "./components/footer";
 
 export default function Opensource() {
     return (
@@ -201,40 +202,8 @@ export default function Opensource() {
                     </marquee>
                 </div>
             </div>
-            <footer>
-                <div className="container">
-                    <div className="footer-content">
-                        <div className="footer-links">
-                            <a href="index.html">Home</a>
-                            <a href="games.html">Games</a>
-                            <a href="https://nijikasoftworks.meowcat.site/">News</a>
-                            <a href="credits.html">Credits</a>
-                            <a href="opensource.html">Open Source</a>
-                            <a href="changelog.html">Changelog</a>
-                            <a href="archive.html">Archive</a>
-                        </div>
-                        <p className="copyright">
-                            © 2025 Nijika Softworks &amp; Neuron Technologies | All rights
-                            reserved.
-                        </p>
-                        <a href="https://nijikasoftworks.meowcat.site/">
-                            <img
-                                src="/images/ns_yellow.png"
-                                height={150}
-                                width={500}
-                                alt="Nijika Softworks"
-                            />
-                        </a>
-                        <a href="https://github.com/Starry-Systems/">
-                            <img
-                                src="https://avatars.githubusercontent.com/u/241321890?s=200&v=4"
-                                height={150}
-                                alt="Starry Systems GitHub"
-                            />
-                        </a>
-                    </div>
-                </div>
-            </footer>
+
+            <Footer />
             {/* FPS Counter */}
             <div
                 id="fps-counter"

@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet";
 import React from "react";
 import Navbar from "./components/navbar";
+import Footer from "./components/footer";
 
 export default function Archive() {
     return (
@@ -133,24 +134,7 @@ export default function Archive() {
 
             </div>
 
-            <footer>
-                <div className="container">
-                    <div className="footer-content">
-                        <div className="footer-links">
-                            <a href="/">Home</a>
-                            <a href="/games">Games</a>
-                            <a href="/credits">Credits</a>
-                            <a href="/opensource">Open Source</a>
-                            <a href="/changelog">Changelog</a>
-                            <a href="/archive">Archive</a>
-                        </div>
-                        <p className="copyright">© 2025 Nijika Softworks. All rights reserved.</p>
-                        <a href="https://nijikasoftworks.meowcat.site/">
-                            <img src="/images/ns_yellow.png" height={150} width={500} alt="Nijika Softworks" />
-                        </a>
-                    </div>
-                </div>
-            </footer>
+            <Footer />
 
             {/* FPS Counter */}
             <div id="fps-counter" style={{ position: "fixed", top: 10, right: 10, background: "rgba(20,20,20,0.8)", color: "#0f0", fontFamily: "monospace", fontSize: 16, padding: "6px 12px", borderRadius: 6, zIndex: 9999, pointerEvents: "none" }}>
