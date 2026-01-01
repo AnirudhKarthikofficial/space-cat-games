@@ -1,4 +1,8 @@
 node_modules
 .env
+<<<<<<< HEAD
+dist
+=======
 dist/
 .vite
+>>>>>>> main

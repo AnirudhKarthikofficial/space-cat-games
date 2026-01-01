@@ -1,3 +1,4 @@
+
 # Space Cat Games
 
 **The free and open source way to host a games website!**
@@ -235,3 +236,4 @@ Contributions are welcome! Suggested workflow:
    - A clear description
    - Testing or verification steps
 
+>>>>>>> main
