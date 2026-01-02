@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Starry Systems and Nijika Softworks.
+ */
+
 /**
 *
 *  Base64 encode / decode

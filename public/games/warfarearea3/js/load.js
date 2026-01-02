@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Starry Systems and Nijika Softworks.
+ */
+
 var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation,lib;
 var scaling = window.devicePixelRatio;
 var iw = window.innerWidth, ih=window.innerHeight;

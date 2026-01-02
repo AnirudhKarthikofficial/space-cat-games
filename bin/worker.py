@@ -1,3 +1,5 @@
+#  Copyright (c) Starry Systems and Nijika Softworks.
+
 import os
 import re
 import git

@@ -1,4 +1,8 @@
-﻿var M={};
+﻿/*
+ * Copyright (c) Starry Systems and Nijika Softworks.
+ */
+
+var M={};
 M.parent=Game.Objects['Farm'];
 M.parent.minigame=M;
 M.launch=function()

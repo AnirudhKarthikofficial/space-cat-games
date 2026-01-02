@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Starry Systems and Nijika Softworks.
+ */
+
 var APP_NAME = "breaklock",
   APP_VERSION = 12,
   CACHE_NAME = APP_NAME + "_" + APP_VERSION;

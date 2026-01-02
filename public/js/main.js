@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Starry Systems and Nijika Softworks.
+ */
+
 // Make require usage safe in browsers (avoid ReferenceError when `require` is not defined)
 let owo = null;
 if (typeof require !== 'undefined') {

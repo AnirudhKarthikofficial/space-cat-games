@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Starry Systems and Nijika Softworks.
+ */
+
 document.addEventListener('DOMContentLoaded', function () {
     const searchInput = document.getElementById('gameSearch');
     const sortSelect = document.getElementById('gameSort');

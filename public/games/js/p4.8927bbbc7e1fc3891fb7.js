@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Starry Systems and Nijika Softworks.
+ */
+
 !(function (e) {
   function a(a) {
     for (var t, r, n = a[0], i = a[1], s = 0, c = []; s < n.length; s++)

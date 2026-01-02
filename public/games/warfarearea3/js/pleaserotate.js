@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Starry Systems and Nijika Softworks.
+ */
+
 /*pleaserotate.js by Rob Scanlon, MIT license. http://github.com/arscan/pleaserotate.js*/
 $(window).focus(function() { 
     if(skana) createjs.Sound.muted = false;

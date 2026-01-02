@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Starry Systems and Nijika Softworks.
+ */
+
 console.log(
   "%c" + "Hold Up!",
   "color: #7289DA; -webkit-text-stroke: 2px black; font-size: 72px; font-weight: bold;"

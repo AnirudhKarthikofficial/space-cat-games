@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Starry Systems and Nijika Softworks.
+ */
+
 document
   .getElementById("anime-mode-toggle")
   .addEventListener("click", function () {

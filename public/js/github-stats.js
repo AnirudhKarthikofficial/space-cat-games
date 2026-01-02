@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Starry Systems and Nijika Softworks.
+ */
+
 document.addEventListener("DOMContentLoaded", async () => {
     const container = document.getElementById("github-stats");
     const owner = "neurontechofficial";

@@ -2,8 +2,10 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import os from 'node:os'
 import { execSync } from 'node:child_process'
+import fs from 'node:fs'
+import path from 'node:path'
 
-// Get Git commit hash and branch safely
+// Git info
 function gitInfo() {
   try {
     const commit = execSync('git rev-parse --short HEAD').toString().trim()
@@ -16,12 +18,12 @@ function gitInfo() {
 
 const git = gitInfo()
 
-// Get Vite version from environment (avoids JSON import issues)
-const viteVersion = process.env.npm_package_dependencies_vite || 'unknown'
+// Vite version
+const vitePkgPath = path.resolve('./node_modules/vite/package.json')
+const viteVersion = JSON.parse(fs.readFileSync(vitePkgPath, 'utf-8')).version
 
 export default defineConfig({
   plugins: [react()],
-
   define: {
     __BUILD_INFO__: JSON.stringify({
       date: new Date().toISOString(),
@@ -33,12 +35,10 @@ export default defineConfig({
       gitBranch: git.branch,
     }),
   },
-
   optimizeDeps: {
     entries: ['index.html'],
     exclude: ['public/games/*'],
   },
-
   test: {
     globals: true,
     environment: 'jsdom',

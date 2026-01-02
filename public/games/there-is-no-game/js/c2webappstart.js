@@ -1,4 +1,8 @@
 
+/*
+ * Copyright (c) Starry Systems and Nijika Softworks.
+ */
+
 // Start the Construct 2 project running on window load.
 jQuery(document).ready(function ()
 {			

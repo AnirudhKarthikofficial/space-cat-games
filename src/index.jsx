@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Starry Systems and Nijika Softworks.
+ */
+
 import { Helmet } from "react-helmet";
 import { useEffect, useState } from "react";
 import Navbar from "./components/navbar";
