@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-01-02T10:43:28.868Z",
-  "count": 107,
+  "generatedAt": "2026-01-02T17:25:13.201Z",
+  "count": 112,
   "games": [
     {
       "title": "FIFA 2007",
@@ -638,9 +638,34 @@
       "img": "/images/bitplanesicon.png"
     },
     {
-      "title": "FNF: Bopcityi",
+      "title": "FNF: Bopcity",
       "url": "/games/bopcity.html",
       "img": "/images/bopcityicon.png"
+    },
+    {
+      "title": "Please Don't Touch Anything",
+      "url": "/games/pleasedonttouch.html",
+      "img": "/images/pleaseicon.png"
+    },
+    {
+      "title": "Telekinesis Drive",
+      "url": "/games/tdrive.html",
+      "img": "/images/tdrive.png"
+    },
+    {
+      "title": "Tomodatchi Collection",
+      "url": "/games/tomodatchi.html",
+      "img": "/images/tomodachi.png"
+    },
+    {
+      "title": "Space Waves",
+      "url": null,
+      "img": "/images/spacewaves.png"
+    },
+    {
+      "title": "Twerk Race 3D",
+      "url": null,
+      "img": "/images/twerkicon.png"
     }
   ]
 }
