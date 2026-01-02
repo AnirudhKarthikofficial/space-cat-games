@@ -190,18 +190,6 @@ export default function Changelog() {
                         <img src="/gplv3.svg" width="70" height="30" alt="GPL v3" />
                         <img src="/mothracompat.gif" width="70" height="30" alt="Mothra Compatible" />
                         <img src="https://9p.io/plan9/img/power36.gif" width="70" height="30" alt="Plan 9" />
-                        <a href="https://maschinensturmer.neocities.org/">
-                            <img
-                                src="https://maschinensturmer.neocities.org/ningenshikkakubotan.png"
-                                alt="Maschinensturmer"
-                            />
-                        </a>
-                        <a href="https://adilene.net/">
-                            <img src="https://i.ibb.co/9k8TjjhS/sitebutton.gif" alt="Adilene" />
-                        </a>
-                        <a href="https://zorrpu.neocities.org">
-                            <img src="https://zorrpu.com/stamps-etc/link-me/Zorp%2088x31.jpg" alt="Zorrpu" />
-                        </a>
                     </marquee>
                 </div>
             </div>
