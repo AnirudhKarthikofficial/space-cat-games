@@ -26,7 +26,6 @@ export default function Changelog() {
                     <p className="release-date">January 1, 2026</p>
                     <h3>Bugs Addressed:</h3>
                     <ul>
-                        <li>Fixed the AD issues that made it hard to navigate the site.</li>
                         <li>Happy New Year!</li>
                         <li>We now use React!</li>
                         <li>We have fixed many bugs.</li>
