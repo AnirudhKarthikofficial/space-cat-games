@@ -22,10 +22,13 @@ export default function Credits() {
                             <strong>Lead Developer:</strong> Ben
                         </li>
                         <li>
-                            <strong>Developer:</strong> Jayden
+                            <strong>Developer:</strong> <a href="https://lakshin.dev">Lakshin Hemachandran</a>
                         </li>
                         <li>
-                            <strong>Former Developer:</strong> Kaiden
+                            <strong>Developer:</strong> Anirudh
+                        </li>
+                        <li>
+                            <strong><a href="https://github.com/neurontechofficial">Neuron Technologies </a></strong>
                         </li>
                     </ul>
                 </section>

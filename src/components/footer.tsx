@@ -18,7 +18,7 @@ export default function Footer() {
     return (
         <footer>
             <div className="container">
-                <p>© 2025 Nijika Softworks & Neuron Technologies | All rights reserved.</p>
+                <p>© 2025 Nijika Softworks & <a href="https://github.com/neurontechofficial">Neuron Technologies </a> | All rights reserved.</p>
                 <img src={"images/react.png"} width={150} height={60}/>    <img src={"images/vite.svg"} height={55}/>
                 <a
                     data-type="countup"
