@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-02T17:41:23.268Z",
+  "generatedAt": "2026-01-02T22:45:33.485Z",
   "count": 112,
   "games": [
     {
@@ -659,12 +659,12 @@
     },
     {
       "title": "Space Waves",
-      "url": null,
-      "img": "/images/spacewaves.png"
+      "url": "/games/spacewaves.html",
+      "img": "/images/spacewavesicon.png"
     },
     {
       "title": "Twerk Race 3D",
-      "url": null,
+      "url": "/games/twerkrace.html",
       "img": "/images/twerkicon.png"
     }
   ]
