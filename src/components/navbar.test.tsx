@@ -29,12 +29,14 @@ describe('Navbar', () => {
     const gamesLink = screen.getByText('Games').closest('a')
     const sourceCodeLink = screen.getByText('Source Code').closest('a')
     const creditsLink = screen.getByText('Credits').closest('a')
+    const changelogLink = screen.getByText('Changelog').closest('a')
     const archiveLink = screen.getByText('Archive').closest('a')
     
     expect(homeLink).toHaveAttribute('href', '/')
     expect(gamesLink).toHaveAttribute('href', '/games')
     expect(sourceCodeLink).toHaveAttribute('href', '/opensource')
     expect(creditsLink).toHaveAttribute('href', '/credits')
+    expect(changelogLink).toHaveAttribute('href', '/changelog')
     expect(archiveLink).toHaveAttribute('href', '/archive')
   })
 
@@ -42,11 +44,9 @@ describe('Navbar', () => {
     renderWithRouter(<Navbar />)
     
     const newsLink = screen.getByText('News').closest('a')
-    const changelogLink = screen.getByText('Changelog').closest('a')
     const helpLink = screen.getByText('Help').closest('a')
     
     expect(newsLink).toHaveAttribute('href', 'https://nijikasoftworks.meowcat.site/')
-    expect(changelogLink).toHaveAttribute('href', '/changelog.html')
     expect(helpLink).toHaveAttribute('href', 'https://neurontechnologies.flarum.cloud/d/3-space-cat-games-general')
   })
 

@@ -12,7 +12,7 @@ export default function Navbar() {
             <a href="https://nijikasoftworks.meowcat.site/">News</a>
             <Link to="/opensource">Source Code</Link>
             <Link to="/credits">Credits</Link>
-            <a href="/changelog.html">Changelog</a>
+            <Link to="/changelog">Changelog</Link>
             <Link to="/archive">Archive</Link>
             <a href="https://neurontechnologies.flarum.cloud/d/3-space-cat-games-general">
                 Help
