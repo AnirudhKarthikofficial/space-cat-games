@@ -43,6 +43,9 @@ export default function Footer() {
                 >
                     Uptime
                 </a>
+                <a href="/debug">
+                    <button>Debugger</button>
+                </a>
             </div>
         </footer>
     );
