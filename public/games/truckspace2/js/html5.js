@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Starry Systems and Nijika Softworks.
+ */
+
 (function (cjs, an) {
 
 var p; // shortcut to reference prototypes

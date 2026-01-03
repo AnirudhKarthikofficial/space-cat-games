@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Starry Systems and Nijika Softworks.
+ */
+
 miris = false;
 finished = false;
 var isPlaying = false;

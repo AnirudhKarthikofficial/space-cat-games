@@ -1,4 +1,8 @@
 /*
+ * Copyright (c) Starry Systems and Nijika Softworks.
+ */
+
+/*
 Orteil's crappy dungeon generation library, 2013
 Unfinished and buggy, use at your own risk (please credit)
 http://orteil.dashnet.org

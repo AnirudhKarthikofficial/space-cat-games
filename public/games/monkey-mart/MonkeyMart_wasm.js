@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Starry Systems and Nijika Softworks.
+ */
+
 var Module = typeof Module !== "undefined" ? Module : {};
 var moduleOverrides = {};
 var key;

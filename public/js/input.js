@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Starry Systems and Nijika Softworks.
+ */
+
 function addKeyListeners() {
 	keypress.register_combo({
 		keys: "left",

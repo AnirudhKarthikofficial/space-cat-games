@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) Starry Systems and Nijika Softworks.
+  -->
+
 <strings>
 	<string id='Intro01'>Hello user!</string>
 	<string id='Intro02'>I ... I have bad news.</string>

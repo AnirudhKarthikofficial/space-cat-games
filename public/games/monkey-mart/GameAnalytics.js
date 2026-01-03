@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Starry Systems and Nijika Softworks.
+ */
+
 (function(scope) {
     var CryptoJS = CryptoJS || function(o) {
         function t() {}

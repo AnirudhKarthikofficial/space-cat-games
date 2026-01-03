@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Starry Systems and Nijika Softworks.
+ */
+
 self.addEventListener('install', event => {
   self.skipWaiting();
 });

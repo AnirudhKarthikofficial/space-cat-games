@@ -1,4 +1,8 @@
 /*
+ * Copyright (c) Starry Systems and Nijika Softworks.
+ */
+
+/*
 Orteil's sloppy Cookie Clicker dungeons
 
 Optimizations to do (not mentioning the dozens of missing features) :

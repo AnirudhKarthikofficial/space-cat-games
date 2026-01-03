@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Starry Systems and Nijika Softworks.
+ */
+
 function enemy(enemyBox,tips,delayOffset) {
 var attackDelay = -10;
 if (tips == 1) {

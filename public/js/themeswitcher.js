@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Starry Systems and Nijika Softworks.
+ */
+
 console.log("Dark/Light theme switcher loaded into DOM.");
 // Create or find the theme toggle button
 function createThemeToggleButton() {

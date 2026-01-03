@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Starry Systems and Nijika Softworks.
+ */
+
 window['Runtime'] = (function Runtime(__can, __path){
 	var __scope = this;
 	// CService object
