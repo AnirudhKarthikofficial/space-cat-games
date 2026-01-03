@@ -25,7 +25,7 @@ export default function Credits() {
                             <strong>Developer:</strong> <a href="https://lakshin.dev">Lakshin Hemachandran</a>
                         </li>
                         <li>
-                            <strong>Developer:</strong> Anirudh
+                            <strong>Developer:</strong> <a href="https://anirudh.is-a.dev">Anirudh Karthik</a>
                         </li>
                         <li>
                             <strong><a href="https://github.com/neurontechofficial">Neuron Technologies </a></strong>
