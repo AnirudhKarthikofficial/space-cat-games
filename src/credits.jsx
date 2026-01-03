@@ -23,7 +23,7 @@ export default function Credits() {
                     <h2>Development Team</h2>
                     <ul className="credits-list">
                         <li>
-                            <strong>Lead Developer:</strong> Ben
+                            <strong>Lead Developer:</strong> <a href="https://meowcat.site">Ben</a>
                         </li>
                         <li>
                             <strong>Developer:</strong> <a href="https://lakshin.dev">Lakshin Hemachandran</a>
