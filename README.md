@@ -236,5 +236,3 @@ Contributions are welcome! Suggested workflow:
 5. Open a Pull Request with:
    - A clear description
    - Testing or verification steps
-
->>>>>>> main
