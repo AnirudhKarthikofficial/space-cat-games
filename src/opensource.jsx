@@ -22,8 +22,13 @@ export default function Opensource() {
             <Navbar />
 
             <div className="container">
-                <h1>Open Source Information</h1>
+                <h1>Source code and other code things!</h1>
                 <section className="license-section">
+                    <h2>Developer Time!</h2>
+                    <a href="https://wakatime.com/badge/github/neurontechofficial/spacecatgames"><img
+                        src="https://wakatime.com/badge/github/neurontechofficial/spacecatgames.svg"
+                        alt="wakatime"/></a>
+                    <p><small><em>-- please note this was setup in January of 2025 --</em></small></p>
                     <h2>Website Source Code</h2>
                     <p>
                         The Space Cat Games website is built using open web technologies. The
@@ -31,9 +36,6 @@ export default function Opensource() {
                         Public License v3.0.
                     </p>
                     <p>You can view and download the source code from our repositories:</p>
-                    <div id="github-stats" className="stats-container">
-                        <p>Loading repository stats...</p>
-                    </div>
                     <div className="cta-section">
                         <a
                             href="https://github.com/Ijichi-Systems/space-cat-games"
