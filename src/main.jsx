@@ -13,7 +13,6 @@ import Opensource from './opensource.jsx'
 import Changelog from './changelog.jsx'
 import Privacy from './privacy.jsx'
 import DebugDashboard from './components/DebugDashboard'
-import {ComponentPreviews, useInitial} from "./dev/index.js"; // no need for .tsx
 
 const rootEl = document.getElementById('root')
 if (rootEl) {
