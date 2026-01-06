@@ -1,7 +1,7 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import Navbar from './Navbar.jsx'
+import Navbar from './components/navbar.tsx'
 import Home from './index.jsx'
 import Games from './games.jsx'
 import Credits from './credits.jsx'
