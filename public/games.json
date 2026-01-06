@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-01-06T16:13:27.395Z",
-  "count": 122,
+  "generatedAt": "2026-01-06T16:20:54.394Z",
+  "count": 120,
   "games": [
     {
       "title": "FIFA 2007",
@@ -706,16 +706,6 @@
       "title": "Tanuki Sunset",
       "url": "/games/tanukisunset.html",
       "img": "/images/tomnook.png"
-    },
-    {
-      "title": "Tanuki Sunset",
-      "url": "/games/tanukisunset.html",
-      "img": "/images/tomnook.png"
-    },
-    {
-      "title": "Tall.io",
-      "url": "/games/tallio.html",
-      "img": "/images/tallio.png"
     }
   ]
 }
