@@ -131,7 +131,6 @@ export default function Games() {
                         content="Browse our extensive collection of free browser games"
                     />
                 </Helmet>
-                <Navbar />
                 <div className="container">
                     <div
                         style={{

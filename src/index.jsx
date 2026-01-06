@@ -64,7 +64,6 @@ export default function Home() {
                 <meta property="og:type" content="website" />
             </Helmet>
 
-            <Navbar />
 
             <div className="hero">
                 <div className="container">

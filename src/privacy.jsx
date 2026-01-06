@@ -15,7 +15,6 @@ export default function Privacy() {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             </Helmet>
 
-            <Navbar />
 
             <div className="container">
                 <h1>Privacy Policy</h1>

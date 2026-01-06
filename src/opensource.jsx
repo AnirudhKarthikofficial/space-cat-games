@@ -19,7 +19,6 @@ export default function Opensource() {
                 <link rel="icon" href="/favicon.ico" type="image/x-icon" />
             </Helmet>
 
-            <Navbar />
 
             <div className="container">
                 <h1>Source code and other code things!</h1>
