@@ -131,7 +131,7 @@ Copy the built files into your web root.
 
 ---
 
-## Docker (Optional)
+## Docker (Experimental/Unknown)
 
 Example multi-stage Dockerfile that builds the app and serves it with nginx:
 
