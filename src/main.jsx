@@ -59,12 +59,7 @@ if (rootEl) {
                 {/* Debug Dashboard */}
                 <Route path="/debug" element={<DebugDashboard/>}/>
 
-                {/* Fallback */}
-                <Route path="*" element={<DevSupport ComponentPreviews={ComponentPreviews}
-                                                     useInitialHook={useInitial}
-                >
                     <Navigate to="/" replace/>
-                </DevSupport>}/>
             </Routes>
         </BrowserRouter>
     )

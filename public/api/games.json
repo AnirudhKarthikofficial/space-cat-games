@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-01-03T22:45:46.459Z",
-  "count": 112,
+  "generatedAt": "2026-01-06T16:13:27.395Z",
+  "count": 122,
   "games": [
     {
       "title": "FIFA 2007",
@@ -666,6 +666,56 @@
       "title": "Twerk Race 3D",
       "url": "/games/twerkrace.html",
       "img": "/images/twerkicon.png"
+    },
+    {
+      "title": "Kittytoy",
+      "url": "/games/kittytoy.html",
+      "img": "/images/kittytoyicon.png"
+    },
+    {
+      "title": "Layers Roll",
+      "url": "/games/layers.html",
+      "img": "/images/layersicon.png"
+    },
+    {
+      "title": "Ragdoll Archers",
+      "url": "/games/ragdollarchers.html",
+      "img": "/images/ragdollarchicon.png"
+    },
+    {
+      "title": "Ragdoll Hit",
+      "url": "/games/ragdollhit.html",
+      "img": "/images/ragdollhit.png"
+    },
+    {
+      "title": "Touhou: Luminous Strike",
+      "url": "/games/touhoulum.html",
+      "img": "/images/touhoulumicon.png"
+    },
+    {
+      "title": "Tug of War with Cars",
+      "url": "/games/carwar.html",
+      "img": "/images/carwar.png"
+    },
+    {
+      "title": "Waterworks!",
+      "url": "/games/waterworks.html",
+      "img": "/images/waterworks.png"
+    },
+    {
+      "title": "Tanuki Sunset",
+      "url": "/games/tanukisunset.html",
+      "img": "/images/tomnook.png"
+    },
+    {
+      "title": "Tanuki Sunset",
+      "url": "/games/tanukisunset.html",
+      "img": "/images/tomnook.png"
+    },
+    {
+      "title": "Tall.io",
+      "url": "/games/tallio.html",
+      "img": "/images/tallio.png"
     }
   ]
 }
