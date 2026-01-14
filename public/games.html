@@ -28,19 +28,18 @@
 
     gtag('config', 'G-TTZS202J2Q');
   </script>
-      <script>
-        // Check if we're already in the SPA context
-        if (!window.location.pathname.startsWith('/games') && 
-            document.getElementById('root')) {
-            // Already in SPA, do nothing
-            console.log("Already in SPA-chan!")
-        } else {
-            // Redirect to SPA route
-            const path = window.location.pathname.replace('.html', '');
-            console.log("Redirecting to SPA-chan!")
-            window.location.replace(path);
-        }
-    </script>
+<script>
+  // Check if this is the HTML file (has .html extension in the actual file path)
+  // If we're already at /games without .html, we're in the SPA
+  if (window.location.pathname.endsWith('.html')) {
+      // We're on the HTML file, redirect to SPA route
+      const path = window.location.pathname.replace('.html', '');
+      console.log("Redirecting to SPA-chan!", path);
+      window.location.replace(path);
+  } else {
+      console.log("Already in SPA-chan!");
+  }
+</script>
 
   <script>
     window.addEventListener('load', function () {
