@@ -33,9 +33,11 @@
         if (!window.location.pathname.startsWith('/games') && 
             document.getElementById('root')) {
             // Already in SPA, do nothing
+            console.log("Already in SPA-chan!")
         } else {
             // Redirect to SPA route
             const path = window.location.pathname.replace('.html', '');
+            console.log("Redirecting to SPA-chan!")
             window.location.replace(path);
         }
     </script>
