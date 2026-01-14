@@ -28,6 +28,18 @@
 
     gtag('config', 'G-TTZS202J2Q');
   </script>
+      <script>
+        // Check if we're already in the SPA context
+        if (!window.location.pathname.startsWith('/app') && 
+            document.getElementById('root')) {
+            // Already in SPA, do nothing
+        } else {
+            // Redirect to SPA route
+            const path = window.location.pathname.replace('.html', '');
+            window.location.replace(path);
+        }
+    </script>
+
   <script>
     window.addEventListener('load', function () {
       const spinner = document.getElementById('loading-spinner');
