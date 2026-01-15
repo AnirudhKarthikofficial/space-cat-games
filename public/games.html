@@ -28,6 +28,19 @@
 
     gtag('config', 'G-TTZS202J2Q');
   </script>
+<script>
+  // Check if this is the HTML file (has .html extension in the actual file path)
+  // If we're already at /games without .html, we're in the SPA
+  if (window.location.pathname.endsWith('.html')) {
+      // We're on the HTML file, redirect to SPA route
+      const path = window.location.pathname.replace('.html', '');
+      console.log("Redirecting to SPA-chan!", path);
+      window.location.replace(path);
+  } else {
+      console.log("Already in SPA-chan!");
+  }
+</script>
+
   <script>
     window.addEventListener('load', function () {
       const spinner = document.getElementById('loading-spinner');
@@ -1005,9 +1018,6 @@
         </div>
         <p>Powered by Space Cat Games</p>
         <p class="copyright">© 2025 Nijika Softworks & Neuron Technologies | All rights reserved.</p>
-        <a href="https://nijikasoftworks.meowcat.site/"><img src="images/ns_yellow.png" height="150" width="500" /></a>
-        <a href="https://github.com/Starry-Systems/"><img
-            src="https://avatars.githubusercontent.com/u/241321890?s=200&v=4" height="150" /></a>
       </div>
   </footer>
 
@@ -1016,7 +1026,7 @@
   position: fixed;
   top: 10px;
   right: 10px;
-  background: rgba(20,20,20,0.8);
+  background: rgba(20,20,20,0.8);ob
   color: #0f0;
   font-family: monospace;
   font-size: 16px;

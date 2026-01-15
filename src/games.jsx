@@ -4,7 +4,6 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import { Helmet } from "react-helmet";
-import { useNavigate } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 
@@ -19,7 +18,6 @@ export default function Games() {
     const [flagDrawerOpen, setFlagDrawerOpen] = useState(false);
     const gamesGridRef = useRef(null);
     const highlightedGameRef = useRef(null);
-    const navigate = useNavigate();
 
     // Load games from API
     useEffect(() => {
@@ -120,14 +118,7 @@ export default function Games() {
     };
 
     const handleGameClick = (url) => {
-        // Check if URL is external (starts with http:// or https://)
-        if (url.startsWith('http://') || url.startsWith('https://')) {
-            // Open external links in new tab
-            window.open(url, '_blank', 'noopener,noreferrer');
-        } else {
-            // Use React Router's navigate for internal routes to maintain client-side routing
-            navigate(url);
-        }
+        window.location.href = url;
     };
 
     if (loading) {
