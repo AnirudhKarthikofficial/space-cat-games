@@ -185,8 +185,6 @@ export default function Games() {
                 <link href="/games.css" rel="stylesheet" />
             </Helmet>
 
-            <Navbar />
-
             <div className="container">
                 <h1>Games Collection</h1>
                 <p>
