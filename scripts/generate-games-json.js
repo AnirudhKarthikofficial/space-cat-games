@@ -27,12 +27,36 @@ function normalizeUrl(href) {
   }
 }
 
+let games = [];
+
+// Check if games.json already exists, if so use it (useful for CI/CD without HTML)
+const existingJsonPath = apiOutputPath;
+if (fs.existsSync(existingJsonPath)) {
+    try {
+        const existingData = JSON.parse(fs.readFileSync(existingJsonPath, 'utf8'));
+        if (existingData.games && existingData.games.length > 0) {
+            console.log(`Using existing ${apiOutputPath} with ${existingData.games.length} games`);
+            fs.writeFileSync(outputPath, JSON.stringify(existingData, null, 2), 'utf8');
+            console.log(`Wrote ${existingData.games.length} games to ${outputPath}`);
+            process.exit(0);
+        }
+    } catch (e) {
+        console.warn('Could not read existing games.json, falling back to HTML parsing');
+    }
+}
+
+// Fallback: Parse HTML if it exists
+if (!fs.existsSync(inputPath)) {
+    console.error(`Error: ${inputPath} not found and no existing games.json to use`);
+    process.exit(1);
+}
+
 const html = fs.readFileSync(inputPath, 'utf8');
 const root = parse(html);
 
 const items = root.querySelectorAll('.game-item');
 
-const games = items.map(item => {
+games = items.map(item => {
   const img = item.querySelector('img');
   const p = item.querySelector('p');
   const btn = item.querySelector('button');
