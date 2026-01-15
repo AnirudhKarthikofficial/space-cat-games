@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-01-06T16:20:54.394Z",
-  "count": 120,
+  "generatedAt": "2026-01-15T08:11:50.259Z",
+  "count": 119,
   "games": [
     {
       "title": "FIFA 2007",
@@ -661,11 +661,6 @@
       "title": "Space Waves",
       "url": "/games/spacewaves.html",
       "img": "/images/spacewavesicon.png"
-    },
-    {
-      "title": "Twerk Race 3D",
-      "url": "/games/twerkrace.html",
-      "img": "/images/twerkicon.png"
     },
     {
       "title": "Kittytoy",

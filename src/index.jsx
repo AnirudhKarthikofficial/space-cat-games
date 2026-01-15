@@ -4,6 +4,7 @@
 
 import { Helmet } from "react-helmet";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 
@@ -11,6 +12,7 @@ export default function Home() {
     const [buildId, setBuildId] = useState("");
     const [tip, setTip] = useState("");
     const [header, setHeader] = useState("");
+    const navigate = useNavigate();
 
     const tips = [
         "Aishite Aishite Aishite!",
@@ -122,9 +124,20 @@ function Feature({ title, text }) {
 }
 
 function Game({ title, img, url }) {
+    const handleClick = () => {
+        // Check if URL is external (starts with http:// or https://)
+        if (url.startsWith('http://') || url.startsWith('https://')) {
+            // Open external links in new tab
+            window.open(url, '_blank', 'noopener,noreferrer');
+        } else {
+            // Use React Router's navigate for internal routes to maintain client-side routing
+            navigate(url);
+        }
+    };
+
     return (
         <div className="game-item">
-            <button onClick={() => (window.location.href = url)}>
+            <button onClick={handleClick}>
                 <img src={img} alt={title} />
             </button>
             <p>{title}</p>
