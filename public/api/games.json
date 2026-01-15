@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-01-15T08:11:50.259Z",
-  "count": 119,
+  "generatedAt": "2026-01-15T11:22:30.948Z",
+  "count": 120,
   "games": [
     {
       "title": "FIFA 2007",
@@ -701,6 +701,11 @@
       "title": "Tanuki Sunset",
       "url": "/games/tanukisunset.html",
       "img": "/images/tomnook.png"
+    },
+    {
+      "title": "Getting Over It",
+      "url": "/games/gettingoverit.html",
+      "img": "/images/gettingoverit.png"
     }
   ]
 }
