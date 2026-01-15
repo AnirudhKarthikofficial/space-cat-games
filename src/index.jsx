@@ -4,7 +4,6 @@
 
 import { Helmet } from "react-helmet";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 
@@ -12,7 +11,6 @@ export default function Home() {
     const [buildId, setBuildId] = useState("");
     const [tip, setTip] = useState("");
     const [header, setHeader] = useState("");
-    const navigate = useNavigate();
 
     const tips = [
         "Aishite Aishite Aishite!",
@@ -130,8 +128,9 @@ function Game({ title, img, url }) {
             // Open external links in new tab
             window.open(url, '_blank', 'noopener,noreferrer');
         } else {
-            // Use React Router's navigate for internal routes to maintain client-side routing
-            navigate(url);
+            // Use regular browser navigation for internal game routes
+            // These are actual static HTML files that need to be loaded from the public directory
+            window.location.href = url;
         }
     };
 
