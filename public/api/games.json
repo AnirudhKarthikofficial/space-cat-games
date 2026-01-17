@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-01-15T11:39:20.610Z",
-  "count": 121,
+  "generatedAt": "2026-01-17T23:08:24.570Z",
+  "count": 122,
   "games": [
     {
       "title": "FIFA 2007",
@@ -711,6 +711,11 @@
       "title": "Snow Rider 3D",
       "url": "/games/snowrider.html",
       "img": "/images/snowrider.png"
+    },
+    {
+      "title": "Milk Inside a Bag of Milk Inside a Bag of Milk",
+      "url": "/games/milk.html",
+      "img": "/images/milk1.html"
     }
   ]
 }
