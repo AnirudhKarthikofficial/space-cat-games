@@ -27,7 +27,8 @@ async function askQuestion(question) {
 }
 
 async function main() {
-    console.log('\n🎮 Add New Game to Space Cat Games\n');
+    console.log('\n Add New Game to Space Cat Games\n');
+    console.log('\n (C) Space Cat Games - Neuron Technologies, Nijika Softworks. All rights reserved..')
     console.log('Press Ctrl+C at any time to cancel\n');
 
     const title = await askQuestion('Game title: ');
@@ -73,7 +74,7 @@ async function main() {
     // Write back
     fs.writeFileSync(apiPath, JSON.stringify(data, null, 2), 'utf8');
 
-    console.log(`\n✅ Added "${title}" to games.json!`);
+    console.log(`\nAdded "${title}" to games.json!`);
     console.log(`   Total games: ${data.count}`);
     console.log('\nDon\'t forget to:');
     console.log(`   1. Add the game file to public${url}`);
