@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-01-17T23:12:15.203Z",
-  "count": 123,
+  "generatedAt": "2026-01-17T23:13:37.215Z",
+  "count": 124,
   "games": [
     {
       "title": "FIFA 2007",
@@ -721,6 +721,11 @@
       "title": "Milk Outside A Bag Of Milk Outside A Bag Of Milk",
       "url": "/games/milk2.html",
       "img": "/images/milk2.png"
+    },
+    {
+      "title": "Office Fight",
+      "url": "/games/of.html",
+      "img": "/games/office.png"
     }
   ]
 }
