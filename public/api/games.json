@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-01-18T10:21:57.709Z",
-  "count": 128,
+  "generatedAt": "2026-01-18T10:24:45.781Z",
+  "count": 129,
   "games": [
     {
       "title": "FIFA 2007",
@@ -746,6 +746,11 @@
       "title": "osu!",
       "url": "/games/osu!.html",
       "img": "/images/osu.png"
+    },
+    {
+      "title": "Postal",
+      "url": "/games/Postal.html",
+      "img": "/images/postal.jpg"
     }
   ]
 }
