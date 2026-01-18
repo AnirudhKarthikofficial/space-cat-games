@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-01-18T09:50:11.349Z",
-  "count": 125,
+  "generatedAt": "2026-01-18T10:12:51.688Z",
+  "count": 126,
   "games": [
     {
       "title": "FIFA 2007",
@@ -731,6 +731,11 @@
       "title": "Ages of Conflict",
       "url": "/games/aoc.html",
       "img": "/images/aoc.png"
+    },
+    {
+      "title": "Evolving Bombs 3D",
+      "url": "/games/eb3.html",
+      "img": "/images/eb3.png"
     }
   ]
 }
