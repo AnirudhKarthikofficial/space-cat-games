@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-01-17T23:13:37.215Z",
-  "count": 124,
+  "generatedAt": "2026-01-18T09:50:11.349Z",
+  "count": 125,
   "games": [
     {
       "title": "FIFA 2007",
@@ -726,6 +726,11 @@
       "title": "Office Fight",
       "url": "/games/of.html",
       "img": "/images/office.png"
+    },
+    {
+      "title": "Ages of Conflict",
+      "url": "/games/aoc.html",
+      "img": "/images/aoc.png"
     }
   ]
 }
