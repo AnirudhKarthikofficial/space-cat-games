@@ -24,11 +24,12 @@ export default function Home() {
     ];
 
     useEffect(() => {
+        const version = __BUILD_INFO__.appVersion;
         // Header randomization
         if (Math.random() < 0.1) {
-            setHeader("スペースキャットゲーム バージョン18");
+            setHeader(`スペースキャットゲーム バージョン${version}`);
         } else {
-            setHeader("Welcome to Space Cat Games 18 - Hello, React!");
+            setHeader(`Welcome to Space Cat Games ${version} - Hello, React!`);
         }
 
         // Random tips
@@ -37,19 +38,23 @@ export default function Home() {
         pickTip();
         const interval = setInterval(pickTip, 5000);
 
-        // Build ID fetch
-        fetch("https://api.github.com/repos/Starry-Systems/spacecatgames/commits?per_page=1")
-            .then(r => r.json())
-            .then(d => {
-                if (d?.[0]?.sha) {
-                    setBuildId("Build ID: " + d[0].sha.slice(0, 7));
-                } else {
-                    setBuildId("Session ID: " + Math.random().toString().slice(2, 10));
-                }
-            })
-            .catch(() =>
-                setBuildId("Session ID: " + Math.random().toString().slice(2, 10))
-            );
+        // Build ID - prefer local build info which is now accurate
+        if (__BUILD_INFO__.gitCommit !== 'unknown') {
+            setBuildId("Build: " + __BUILD_INFO__.gitCommit);
+        } else {
+            fetch("https://api.github.com/repos/Starry-Systems/spacecatgames/commits?per_page=1")
+                .then(r => r.json())
+                .then(d => {
+                    if (d?.[0]?.sha) {
+                        setBuildId("Build ID: " + d[0].sha.slice(0, 7));
+                    } else {
+                        setBuildId("Session ID: " + Math.random().toString().slice(2, 10));
+                    }
+                })
+                .catch(() =>
+                    setBuildId("Session ID: " + Math.random().toString().slice(2, 10))
+                );
+        }
 
         return () => clearInterval(interval);
     }, []);
@@ -93,16 +98,16 @@ export default function Home() {
 
                     <div className="games-grid">
                         <Game title="SuperTuxKart"
-                              img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3wVhcyQV-z7il2CAUbDkZJKkWTUe9lrR_3A&s"
-                              url="https://supertuxkart.pages.dev/" />
+                            img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3wVhcyQV-z7il2CAUbDkZJKkWTUe9lrR_3A&s"
+                            url="https://supertuxkart.pages.dev/" />
 
                         <Game title="Minecraft"
-                              img="https://i.ibb.co/tT7XZRMW/Grass-Block-JE2.webp"
-                              url="/games/minecraft.html" />
+                            img="https://i.ibb.co/tT7XZRMW/Grass-Block-JE2.webp"
+                            url="/games/minecraft.html" />
 
                         <Game title="Crazy Cattle 3D"
-                              img="/images/cattlemoment.webp"
-                              url="/games/clcrazycattle3d.html" />
+                            img="/images/cattlemoment.webp"
+                            url="/games/clcrazycattle3d.html" />
                     </div>
                 </section>
             </div>
