@@ -715,7 +715,7 @@
     {
       "title": "Milk Inside a Bag of Milk Inside a Bag of Milk",
       "url": "/games/milk.html",
-      "img": "/images/milk1.html"
+      "img": "/images/milk.png"
     },
     {
       "title": "Milk Outside A Bag Of Milk Outside A Bag Of Milk",
@@ -725,7 +725,7 @@
     {
       "title": "Office Fight",
       "url": "/games/of.html",
-      "img": "/games/office.png"
+      "img": "/images/office.png"
     }
   ]
 }
