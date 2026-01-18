@@ -5,6 +5,8 @@
 import { Link } from 'react-router-dom'
 
 export default function Navbar() {
+    const version = __BUILD_INFO__.appVersion;
+
     return (
         <div className="topnav">
             <Link to="/">Home</Link>
@@ -17,6 +19,15 @@ export default function Navbar() {
             <a href="https://neurontechnologies.flarum.cloud/d/3-space-cat-games-general">
                 Help
             </a>
+            <span style={{
+                float: 'right',
+                padding: '14px 16px',
+                color: '#888',
+                fontSize: '0.8rem',
+                cursor: 'default'
+            }}>
+                v{version}
+            </span>
         </div>
     );
 }

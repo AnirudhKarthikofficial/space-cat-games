@@ -22,6 +22,10 @@ const git = gitInfo()
 const vitePkgPath = path.resolve('./node_modules/vite/package.json')
 const viteVersion = JSON.parse(fs.readFileSync(vitePkgPath, 'utf-8')).version
 
+// App version
+const appPkgPath = path.resolve('./package.json')
+const appVersion = JSON.parse(fs.readFileSync(appPkgPath, 'utf-8')).version
+
 export default defineConfig({
   plugins: [react()],
   define: {
@@ -31,6 +35,7 @@ export default defineConfig({
       os: `${os.type()} ${os.release()} ${os.arch()}`,
       node: process.version,
       vite: viteVersion,
+      appVersion: appVersion,
       gitCommit: git.commit,
       gitBranch: git.branch,
     }),

@@ -10,6 +10,7 @@ interface BuildInfo {
     os: string
     node: string
     vite: string
+    appVersion: string
     gitCommit: string
     gitBranch: string
 }

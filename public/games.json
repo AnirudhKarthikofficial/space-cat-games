@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-01-15T11:39:20.610Z",
-  "count": 121,
+  "generatedAt": "2026-01-18T09:50:11.349Z",
+  "count": 125,
   "games": [
     {
       "title": "FIFA 2007",
@@ -711,6 +711,26 @@
       "title": "Snow Rider 3D",
       "url": "/games/snowrider.html",
       "img": "/images/snowrider.png"
+    },
+    {
+      "title": "Milk Inside a Bag of Milk Inside a Bag of Milk",
+      "url": "/games/milk.html",
+      "img": "/images/milk.png"
+    },
+    {
+      "title": "Milk Outside A Bag Of Milk Outside A Bag Of Milk",
+      "url": "/games/milk2.html",
+      "img": "/images/milk2.png"
+    },
+    {
+      "title": "Office Fight",
+      "url": "/games/of.html",
+      "img": "/images/office.png"
+    },
+    {
+      "title": "Ages of Conflict",
+      "url": "/games/aoc.html",
+      "img": "/images/aoc.png"
     }
   ]
 }
