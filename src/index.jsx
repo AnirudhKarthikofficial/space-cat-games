@@ -78,6 +78,7 @@ export default function Home() {
 
                     <br />
                     <a href="/games" className="btn">Play Now</a>
+                    <!-- Eplinx.com / Banner / 120x240 --><ins class="ins-zone" data-zone="160013"></ins><script data-cfasync="false" async src="https://media.eplinx.net/js/code.min.js"></script><!-- /Eplinx.com -->
                 </div>
             </div>
 
@@ -108,6 +109,7 @@ export default function Home() {
                         <Game title="Crazy Cattle 3D"
                             img="/images/cattlemoment.webp"
                             url="/games/clcrazycattle3d.html" />
+                        <!-- Eplinx.com / Banner / 120x240 --><ins class="ins-zone" data-zone="160013"></ins><script data-cfasync="false" async src="https://media.eplinx.net/js/code.min.js"></script><!-- /Eplinx.com -->
                     </div>
                 </section>
             </div>
