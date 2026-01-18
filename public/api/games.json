@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-01-18T10:24:45.781Z",
-  "count": 129,
+  "generatedAt": "2026-01-18T21:54:04.567Z",
+  "count": 130,
   "games": [
     {
       "title": "FIFA 2007",
@@ -751,6 +751,12 @@
       "title": "Postal",
       "url": "/games/Postal.html",
       "img": "/images/postal.jpg"
+    },
+    {
+      "title": "Peggle",
+      "url": "/games/Peggle.html",
+      "img": "/images/peggle.png",
+      "alt": "peg"
     }
   ]
 }
