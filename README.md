@@ -91,7 +91,7 @@ or
 yarn build
 ```
 
-After building, a folder such as `build/` or `dist/` will be created. The contents (`index.html`, JS, and CSS assets) are static files you can upload to any static host.
+After building, a folder called `dist/` will be created. The contents (`index.html`, JS, and CSS assets) are static files you can upload to any static host.
 
 ### Preview the production build locally
 
@@ -112,7 +112,7 @@ serve -s build
 
 ### Static hosts
 
-Upload the contents of the `build/` (or `dist/`) folder to your host root.
+Upload the contents of the `dist/` folder to your host root.
 
 ### GitHub Pages
 
@@ -121,7 +121,7 @@ Use the `gh-pages` package or GitHub Actions to publish the build folder.
 ### Netlify / Vercel
 
 - Build command: `npm run build`
-- Publish directory: `build`
+- Publish directory: `dist`
 
 ### Manual webserver (nginx / Apache)
 
@@ -146,7 +146,7 @@ RUN npm run build
 
 # serve stage
 FROM nginx:alpine
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
